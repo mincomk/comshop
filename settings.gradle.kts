@@ -4,3 +4,4 @@ plugins {
 
 include("comshop-core")
 include("example-plugin")
+include("comshop-interface")
