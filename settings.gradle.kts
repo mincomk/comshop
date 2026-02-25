@@ -13,8 +13,6 @@ plugins {
 
 rootProject.name = "comshop"
 
-include("comshop-core")
-
 include("example-plugin")
 include("comshop-interface")
 include("comshop-api")
