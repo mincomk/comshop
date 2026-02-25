@@ -1,21 +1,16 @@
 import com.github.ityeri.comshop.CommandRegistrar
-import com.github.ityeri.comshop.dsl.command
-import com.mojang.brigadier.arguments.BoolArgumentType
-import com.mojang.brigadier.arguments.FloatArgumentType
-import com.mojang.brigadier.arguments.IntegerArgumentType
-import com.mojang.brigadier.arguments.StringArgumentType
-import io.papermc.paper.command.brigadier.argument.ArgumentTypes
-import io.papermc.paper.command.brigadier.argument.resolvers.FinePositionResolver
-import io.papermc.paper.command.brigadier.argument.resolvers.selector.EntitySelectorArgumentResolver
-import io.papermc.paper.command.brigadier.argument.resolvers.selector.PlayerSelectorArgumentResolver
+import com.github.ityeri.comshop.argument.PrimitiveTypes
+import com.github.ityeri.comshop.command
 import org.bukkit.entity.Player
 import org.bukkit.plugin.java.JavaPlugin
+import org.checkerframework.checker.units.qual.Prefix
 
 
 class ComshopPlugin : JavaPlugin() {
 
     override fun onEnable() {
-        CommandRegistrar.lifecycleRegister(this)
+        // onEnable 시점 안에서만 호출되면 됩니다
+        CommandRegistrar.init(this)
 
 
         val greetingCommand = command("greeting") {
@@ -50,12 +45,12 @@ class ComshopPlugin : JavaPlugin() {
                     // 예컨대, 만약 string 인자가 bool 보다 앞에 있으면,
                     // string 이 단어인 "false", "true" 을 먼저 파싱해 버리기에
                     // 그 뒤쪽의 bool 인자는 파싱될수 없습니다
-                    "int" to IntegerArgumentType.integer()
-                    "bool" to BoolArgumentType.bool()
-                    "string" to StringArgumentType.word()
-                    "float" to FloatArgumentType.floatArg()
-                    "entity" to ArgumentTypes.entity()
-                    "coordinate" to ArgumentTypes.finePosition()
+                    "int" to PrimitiveTypes.int()
+                    "bool" to PrimitiveTypes.bool()
+                    "string" to PrimitiveTypes.string()
+                    "float" to PrimitiveTypes.float()
+                    "entity" to TODO()
+                    "coordinate" to TODO()
                 }
             }
 

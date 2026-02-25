@@ -1,23 +1,14 @@
 plugins {
-    kotlin("jvm") version "2.2.0"
+    alias(libs.plugins.kotlinPluginSerialization)
+    kotlin("jvm")
     id("com.gradleup.shadow") version "8.3.0"
     id("xyz.jpenilla.run-paper") version "2.3.1"
 }
 
-repositories {
-    mavenCentral()
-    maven("https://repo.papermc.io/repository/maven-public/") {
-        name = "papermc"
-    }
-}
-
 dependencies {
-    implementation(kotlin("stdlib-jdk8"))
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+    compileOnly(libs.paper)
 
-    compileOnly("io.papermc.paper:paper-api:1.21.10-R0.1-SNAPSHOT")
-
-    implementation(project(":comshop-core"))
+    implementation(project(":comshop-api"))
 }
 
 tasks.build {
