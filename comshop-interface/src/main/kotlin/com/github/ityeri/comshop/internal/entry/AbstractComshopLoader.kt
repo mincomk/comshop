@@ -1,6 +1,6 @@
 package com.github.ityeri.comshop.internal.entry
 
-import com.github.ityeri.comshop.internal.AbstractCommandRegistrar
+import com.github.ityeri.comshop.internal.entry.AbstractCommandRegistrar
 import io.papermc.paper.command.brigadier.CommandSourceStack
 
 interface AbstractComshopLoader {

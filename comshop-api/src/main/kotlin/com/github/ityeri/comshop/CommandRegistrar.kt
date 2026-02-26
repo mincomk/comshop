@@ -1,6 +1,6 @@
 package com.github.ityeri.comshop
 
-import com.github.ityeri.comshop.internal.AbstractCommandRegistrar
+import com.github.ityeri.comshop.internal.entry.AbstractCommandRegistrar
 import com.github.ityeri.comshop.internal.argument.ComshopArgumentType
 import com.github.ityeri.comshop.internal.node.Node
 import com.github.ityeri.comshop.internal.node.type.NodeType
