@@ -37,7 +37,7 @@ import org.bukkit.scoreboard.DisplaySlot
 import java.util.UUID
 
 object PaperTypes : AbstractPaperTypes {
-    val types = ComshopBootstrapper.loader!!.loadPaperTypes()
+    private val types = ComshopBootstrapper.loader!!.loadPaperTypes()
 
     override fun entity(): ComshopArgumentType<Entity> = types.entity()
     override fun entities(): ComshopArgumentType<Collection<Entity>> = types.entities()
