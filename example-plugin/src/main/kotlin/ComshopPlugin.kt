@@ -1,9 +1,10 @@
 import com.github.ityeri.comshop.CommandRegistrar
+import com.github.ityeri.comshop.argument.PaperTypes
 import com.github.ityeri.comshop.argument.PrimitiveTypes
 import com.github.ityeri.comshop.command
+import io.papermc.paper.math.FinePosition
 import org.bukkit.entity.Player
 import org.bukkit.plugin.java.JavaPlugin
-import org.checkerframework.checker.units.qual.Prefix
 
 
 class ComshopPlugin : JavaPlugin() {
@@ -17,8 +18,8 @@ class ComshopPlugin : JavaPlugin() {
             requires { source -> source.sender is Player }
 
             arguments {
-                "player" to ArgumentTypes.player()
-                "message" to StringArgumentType.greedyString()
+                "player" to PaperTypes.player()
+                "message" to PrimitiveTypes.string()
             }
 
             executes { source, sender ->
@@ -26,7 +27,7 @@ class ComshopPlugin : JavaPlugin() {
                 // Paper API 가 제공하는 player 인자 파서는 Player 대신 PlayerSelectorArgumentResolver 를 던집니다
                 // ArgumentResolver 또는 SelectorArgumentResolver 로부턴
                 // resolve, resolveFirst 라는 접미사를 사용하여 값을 뽑아낼수 있습니다
-                val receiverPlayer = "player" to PlayerSelectorArgumentResolver::class resolveFirst source
+                val receiverPlayer = "player" to Player::class
 
                 // String 에 대한 확장 접미사인 to 를 통해 인자 이름으로  인자 값을 가져올수 있습니다
                 // "message" 인자가 Int 타입이라면 "message" to Int::class 형태입니다
@@ -49,8 +50,8 @@ class ComshopPlugin : JavaPlugin() {
                     "bool" to PrimitiveTypes.bool()
                     "string" to PrimitiveTypes.string()
                     "float" to PrimitiveTypes.float()
-                    "entity" to TODO()
-                    "coordinate" to TODO()
+                    "entity" to PaperTypes.entity()
+                    "coordinate" to PaperTypes.finePosition()
                 }
             }
 
@@ -62,10 +63,8 @@ class ComshopPlugin : JavaPlugin() {
                 val boolValue = "bool" nullOr Boolean::class
                 val stringValue = "string" nullOr String::class
                 val floatValue = "float" nullOr Float::class
-                val entity = ("entity" nullOr EntitySelectorArgumentResolver::class)
-                    ?.let { it resolveFirst source }
-                val coordinate = ("coordinate" nullOr FinePositionResolver::class)
-                    ?.let { it resolve source }
+                val entity = "entity" nullOr Float::class
+                val coordinate = "coordinate" nullOr FinePosition::class
 
                 if (intValue != null) {
                     sender.sendMessage("type is int: $intValue")

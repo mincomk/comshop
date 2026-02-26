@@ -1,16 +1,15 @@
-import com.github.ityeri.comshop.dsl.command
-import com.mojang.brigadier.arguments.IntegerArgumentType
-import com.mojang.brigadier.arguments.StringArgumentType
-import io.papermc.paper.command.brigadier.argument.ArgumentTypes
-import io.papermc.paper.command.brigadier.argument.resolvers.selector.PlayerSelectorArgumentResolver
+import com.github.ityeri.comshop.argument.PaperTypes
+import com.github.ityeri.comshop.argument.PrimitiveTypes
+import com.github.ityeri.comshop.command
 import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.format.TextColor
 import org.bukkit.entity.Player
 
+
 val newCommand = command("new") {
     arguments {
-        "name" to StringArgumentType.word()
-        "color" to ArgumentTypes.hexColor()
+        "name" to PrimitiveTypes.string()
+        "color" to PaperTypes.hexColor()
     }
 
 
@@ -34,8 +33,8 @@ val newCommand = command("new") {
 
 val addCommand = command("add") {
     arguments {
-        "name" to StringArgumentType.word()
-        "player" to ArgumentTypes.player()
+        "name" to PrimitiveTypes.string()
+        "player" to PaperTypes.player()
     }
 
     executes { source, sender ->
@@ -43,7 +42,7 @@ val addCommand = command("add") {
         val team = teams[teamName]
 
         if (team != null) {
-            val player = "player" to PlayerSelectorArgumentResolver::class resolveFirst source
+            val player = "player" to Player::class
 
             team.members.add(
                 player
