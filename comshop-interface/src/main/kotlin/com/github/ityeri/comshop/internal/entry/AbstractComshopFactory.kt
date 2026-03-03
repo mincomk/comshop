@@ -2,7 +2,7 @@ package com.github.ityeri.comshop.internal.entry
 
 import com.github.ityeri.comshop.internal.node.type.AbstractArgumentNodeType
 import com.github.ityeri.comshop.internal.argument.ComshopArgumentType
-import com.github.ityeri.comshop.internal.argument.CustomArgumentType
+import com.github.ityeri.comshop.internal.argument.AbstractCustomArgumentType
 import com.github.ityeri.comshop.internal.node.type.AbstractCommandNodeType
 import com.mojang.brigadier.context.CommandContext
 
@@ -14,5 +14,4 @@ interface AbstractComshopFactory {
     ): AbstractCommandNodeType<S>
     fun <S, T> createArgumentNodeType(name: String, argumentType: ComshopArgumentType<T>):
             AbstractArgumentNodeType<S, T>
-    fun <T> createCustomArgumentType(customArgumentType: CustomArgumentType<T>): ComshopArgumentType<T>
 }
