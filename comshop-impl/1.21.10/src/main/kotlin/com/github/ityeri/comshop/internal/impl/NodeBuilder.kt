@@ -39,14 +39,14 @@ fun connectBoundaryChain(
         boundaries[0]
     } else {
         val headBoundary = boundaries[0]
-        val tailBoundary = connectBoundaryChain(boundaries.subList(1, boundaries.size))
+        val endBoundary = connectBoundaryChain(boundaries.subList(1, boundaries.size))
 
         for (lastExit in headBoundary.exits) {
-            for (nextEntry in tailBoundary.entries) {
+            for (nextEntry in endBoundary.entries) {
                 lastExit.then(nextEntry)
             }
         }
 
-        headBoundary
+        NodeBoundary(headBoundary.entries, endBoundary.exits)
     }
 }
