@@ -12,13 +12,13 @@ class ComshopFactoryImpl : AbstractComshopFactory {
         commandBlock: (CommandContext<S>) -> Unit,
         permissionChecker: (S) -> Boolean
     ): AbstractCommandNodeType<S> {
-        TODO("Not yet implemented")
+        return CommandNodeType(literal, commandBlock, permissionChecker)
     }
 
     override fun <S, T> createArgumentNodeType(
         name: String,
         argumentType: ComshopArgumentType<T>
     ): AbstractArgumentNodeType<S, T> {
-        TODO("Not yet implemented")
+        return ArgumentNodeType(name, argumentType)
     }
 }
