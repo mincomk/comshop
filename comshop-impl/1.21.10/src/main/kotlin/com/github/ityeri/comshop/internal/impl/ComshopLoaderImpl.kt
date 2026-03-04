@@ -17,10 +17,6 @@ class ComshopLoaderImpl : AbstractComshopLoader {
         return CommandRegistrarImpl()
     }
 
-    override fun <T, N> loadCustomArgumentType(): AbstractCustomArgumentType<T, N> {
-        TODO()
-    }
-
     override fun loadPrimitiveTypes(): AbstractPrimitiveTypes {
         TODO("Not yet implemented")
     }

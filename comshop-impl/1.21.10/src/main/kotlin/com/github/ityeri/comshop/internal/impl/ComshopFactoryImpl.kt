@@ -1,6 +1,8 @@
 package com.github.ityeri.comshop.internal.impl
 
+import com.github.ityeri.comshop.internal.argument.AbstractCustomArgumentType
 import com.github.ityeri.comshop.internal.argument.ComshopArgumentType
+import com.github.ityeri.comshop.internal.argument.NativeArgumentType
 import com.github.ityeri.comshop.internal.entry.AbstractComshopFactory
 import com.github.ityeri.comshop.internal.node.type.AbstractArgumentNodeType
 import com.github.ityeri.comshop.internal.node.type.AbstractCommandNodeType
@@ -20,5 +22,9 @@ class ComshopFactoryImpl : AbstractComshopFactory {
         argumentType: ComshopArgumentType<T>
     ): AbstractArgumentNodeType<S, T> {
         return ArgumentNodeType(name, argumentType)
+    }
+
+    override fun <T, N> createBaseCustomArgumentType(nativeArgumentType: NativeArgumentType<N>): AbstractCustomArgumentType<T, N> {
+        TODO("Not yet implemented")
     }
 }
