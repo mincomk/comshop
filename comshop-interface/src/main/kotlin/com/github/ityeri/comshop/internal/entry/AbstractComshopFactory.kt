@@ -15,6 +15,6 @@ interface AbstractComshopFactory {
     ): AbstractCommandNodeType<S>
     fun <S, T> createArgumentNodeType(name: String, argumentType: ComshopArgumentType<T>):
             AbstractArgumentNodeType<S, T>
-    fun <T, N> createBaseCustomArgumentType(nativeArgumentType: NativeArgumentType<N>):
+    fun <T : Any, N : Any> createBaseCustomArgumentType(nativeArgumentType: NativeArgumentType<N>):
             AbstractCustomArgumentType<T, N>
 }
