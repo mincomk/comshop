@@ -25,6 +25,6 @@ class ComshopFactoryImpl : AbstractComshopFactory {
     }
 
     override fun <T : Any, N : Any> createBaseCustomArgumentType(nativeArgumentType: NativeArgumentType<N>): AbstractCustomArgumentType<T, N> {
-        TODO("Not yet implemented")
+        return BaseCustomArgumentType(nativeArgumentType)
     }
 }
