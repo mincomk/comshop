@@ -11,7 +11,7 @@ import io.papermc.paper.command.brigadier.argument.CustomArgumentType
 import java.util.concurrent.CompletableFuture
 
 
-open class ComshopCustomArgumentType<T : Any, N : Any>(
+open class BaseCustomArgumentType<T : Any, N : Any>(
     override val nativeArgumentType: NativeArgumentType<N>
 ) : AbstractCustomArgumentType<T, N> {
     override fun parse(reader: StringReader): T {
@@ -28,7 +28,7 @@ open class ComshopCustomArgumentType<T : Any, N : Any>(
     override fun build(): ArgumentType<T> {
         return object : CustomArgumentType<T, N> {
             override fun parse(reader: StringReader): T {
-                return this@ComshopCustomArgumentType.parse(reader)
+                return this@BaseCustomArgumentType.parse(reader)
             }
 
             override fun getNativeType(): ArgumentType<N> {
@@ -39,7 +39,7 @@ open class ComshopCustomArgumentType<T : Any, N : Any>(
                 context: CommandContext<S>,
                 builder: SuggestionsBuilder
             ): CompletableFuture<Suggestions> {
-                this@ComshopCustomArgumentType.suggests(context, builder.remaining).forEach { text ->
+                this@BaseCustomArgumentType.suggests(context, builder.remaining).forEach { text ->
                     builder.suggest(text)
                 }
 
