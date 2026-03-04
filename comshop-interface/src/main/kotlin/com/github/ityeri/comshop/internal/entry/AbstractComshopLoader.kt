@@ -6,7 +6,7 @@ import io.papermc.paper.command.brigadier.CommandSourceStack
 interface AbstractComshopLoader {
     fun loadFactory(): AbstractComshopFactory
     fun loadRegistrar(): AbstractCommandRegistrar<CommandSourceStack>
-    fun <T> loadCustomArgumentType(): AbstractCustomArgumentType<T>
+    fun <T, N> loadCustomArgumentType(): AbstractCustomArgumentType<T, N>
 
     fun loadPrimitiveTypes(): AbstractPrimitiveTypes
     fun loadPaperTypes(): AbstractPaperTypes

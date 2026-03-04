@@ -10,15 +10,15 @@ import io.papermc.paper.command.brigadier.CommandSourceStack
 
 class ComshopLoaderImpl : AbstractComshopLoader {
     override fun loadFactory(): AbstractComshopFactory {
-        TODO("Not yet implemented")
+        return ComshopFactoryImpl()
     }
 
     override fun loadRegistrar(): AbstractCommandRegistrar<CommandSourceStack> {
-        TODO("Not yet implemented")
+        return CommandRegistrarImpl()
     }
 
-    override fun <T> loadCustomArgumentType(): AbstractCustomArgumentType<T> {
-        TODO("Not yet implemented")
+    override fun <T, N> loadCustomArgumentType(): AbstractCustomArgumentType<T, N> {
+        TODO()
     }
 
     override fun loadPrimitiveTypes(): AbstractPrimitiveTypes {
