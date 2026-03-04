@@ -18,7 +18,7 @@ class ComshopLoaderImpl : AbstractComshopLoader {
     }
 
     override fun loadPrimitiveTypes(): AbstractPrimitiveTypes {
-        TODO("Not yet implemented")
+        return PrimitiveTypesImpl()
     }
 
     override fun loadPaperTypes(): AbstractPaperTypes {
