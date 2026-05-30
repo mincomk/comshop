@@ -1,6 +1,5 @@
 package com.github.ityeri.comshop.internal.impl
 
-import com.github.ityeri.comshop.internal.argument.AbstractCustomArgumentType
 import com.github.ityeri.comshop.internal.argument.NativeArgumentType
 import com.mojang.brigadier.StringReader
 import com.mojang.brigadier.arguments.ArgumentType

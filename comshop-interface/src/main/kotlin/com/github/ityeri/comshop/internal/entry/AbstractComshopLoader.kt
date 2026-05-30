@@ -1,6 +1,5 @@
 package com.github.ityeri.comshop.internal.entry
 
-import com.github.ityeri.comshop.internal.argument.AbstractCustomArgumentType
 import io.papermc.paper.command.brigadier.CommandSourceStack
 
 interface AbstractComshopLoader {

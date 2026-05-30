@@ -1,6 +1,5 @@
 package com.github.ityeri.comshop.internal.impl
 
-import com.github.ityeri.comshop.internal.argument.ComshopArgumentType
 import com.github.ityeri.comshop.internal.entry.AbstractPrimitiveTypes
 import com.github.ityeri.comshop.internal.entry.StringType
 import com.mojang.brigadier.arguments.ArgumentType

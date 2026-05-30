@@ -1,7 +1,6 @@
 package com.github.ityeri.comshop.internal.impl
 
 import com.destroystokyo.paper.profile.PlayerProfile
-import com.github.ityeri.comshop.internal.argument.ComshopArgumentType
 import com.github.ityeri.comshop.internal.entry.AbstractPaperTypes
 import com.google.common.collect.Range
 import io.papermc.paper.command.brigadier.argument.position.ColumnBlockPosition

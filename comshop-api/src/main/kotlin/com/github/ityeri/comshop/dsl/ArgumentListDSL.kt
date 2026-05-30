@@ -1,7 +1,6 @@
 package com.github.ityeri.comshop.dsl
 
 import com.github.ityeri.comshop.ComshopFactory
-import com.github.ityeri.comshop.internal.argument.ComshopArgumentType
 import com.github.ityeri.comshop.internal.node.ChainNode
 import com.github.ityeri.comshop.internal.node.Node
 import com.github.ityeri.comshop.internal.node.SingleNode

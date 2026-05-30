@@ -1,7 +1,5 @@
 package com.github.ityeri.comshop.internal.entry
 
-import com.github.ityeri.comshop.internal.argument.ComshopArgumentType
-
 interface AbstractPrimitiveTypes {
     fun bool(): ComshopArgumentType<Boolean>
     fun int(min: Int = Int.MIN_VALUE, max: Int = Int.MAX_VALUE): ComshopArgumentType<Int>

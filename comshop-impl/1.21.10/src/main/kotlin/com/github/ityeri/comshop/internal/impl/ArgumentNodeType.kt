@@ -1,6 +1,5 @@
 package com.github.ityeri.comshop.internal.impl
 
-import com.github.ityeri.comshop.internal.argument.ComshopArgumentType
 import com.github.ityeri.comshop.internal.node.type.AbstractArgumentNodeType
 import com.mojang.brigadier.builder.ArgumentBuilder
 import com.mojang.brigadier.builder.RequiredArgumentBuilder
