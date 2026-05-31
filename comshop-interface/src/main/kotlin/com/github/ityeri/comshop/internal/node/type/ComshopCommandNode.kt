@@ -12,6 +12,7 @@ sealed class ComshopCommandNode {
     ) : ComshopCommandNode()
 
     class ArgumentNode<T>(
+        val name: String,
         val argumentType: ComshopArgumentType<T>,
         val requiresChecker: (CommandSourceStack) -> Boolean = { true }
     ) : ComshopCommandNode()
