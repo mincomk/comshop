@@ -1,3 +1,11 @@
 package com.github.ityeri.comshop.internal.impl
 
-class NodeBoundary<T>(val entries: Collection<T>, val exits: Collection<T>)
+import com.mojang.brigadier.Command
+import io.papermc.paper.command.brigadier.CommandSourceStack
+
+class NodeBoundary(
+    val entries: Collection<UnionArgumentBuilder>,
+    val exits: Collection<UnionArgumentBuilder>,
+    val pendingCommand: Command<CommandSourceStack>? = null
+) {
+}
