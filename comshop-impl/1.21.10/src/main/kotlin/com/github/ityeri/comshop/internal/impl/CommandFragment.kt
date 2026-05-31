@@ -7,5 +7,5 @@ import io.papermc.paper.command.brigadier.CommandSourceStack
 
 sealed class CommandFragment {
     class ArgumentFragment<T>(val builder: RequiredArgumentBuilder<CommandSourceStack, T>) : CommandFragment()
-    class ExecuteFragment(val command: Command<CommandSourceStack>) : CommandFragment()
+    class ExecutionFragment(val command: Command<CommandSourceStack>) : CommandFragment()
 }
