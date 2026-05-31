@@ -13,8 +13,6 @@ import com.mojang.brigadier.builder.RequiredArgumentBuilder
 import io.papermc.paper.command.brigadier.CommandSourceStack
 
 
-typealias UnifiedArgumentBuilder = ArgumentBuilder<CommandSourceStack, *>
-
 fun convertToArgumentBuilderNode(node: Node<ComshopCommandNode>): Node<UnifiedArgumentBuilder> =
     nodePTraversal<ComshopCommandNode, UnifiedArgumentBuilder>()
         .modify(
