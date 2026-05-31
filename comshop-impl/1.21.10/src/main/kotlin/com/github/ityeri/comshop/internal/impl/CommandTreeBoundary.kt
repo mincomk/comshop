@@ -3,7 +3,7 @@ package com.github.ityeri.comshop.internal.impl
 import com.mojang.brigadier.Command
 import io.papermc.paper.command.brigadier.CommandSourceStack
 
-class NodeBoundary(
+class CommandTreeBoundary(
     val entries: Collection<UnionArgumentBuilder>,
     val exits: Collection<UnionArgumentBuilder>,
     val pendingCommand: Command<CommandSourceStack>? = null
@@ -11,7 +11,7 @@ class NodeBoundary(
     val onlyExecutionFragment: Boolean
         get() = pendingCommand != null && exits.isEmpty()
 
-    fun connectNext(boundary: NodeBoundary): NodeBoundary {
+    fun connectNext(boundary: CommandTreeBoundary): CommandTreeBoundary {
         exits.forEach { exitBuilder ->
             boundary.entries.forEach { entryBuilder ->
                 exitBuilder.then(entryBuilder)
@@ -22,7 +22,7 @@ class NodeBoundary(
             exits.forEach { it.executes(boundary.pendingCommand) }
         }
 
-        return NodeBoundary(
+        return CommandTreeBoundary(
             entries,
             if (boundary.onlyExecutionFragment) exits else boundary.exits
         )
