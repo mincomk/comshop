@@ -8,4 +8,23 @@ class NodeBoundary(
     val exits: Collection<UnionArgumentBuilder>,
     val pendingCommand: Command<CommandSourceStack>? = null
 ) {
+    val onlyExecutionFragment: Boolean
+        get() = pendingCommand != null && exits.isEmpty()
+
+    fun connectNext(boundary: NodeBoundary): NodeBoundary {
+        exits.forEach { exitBuilder ->
+            boundary.entries.forEach { entryBuilder ->
+                exitBuilder.then(entryBuilder)
+            }
+        }
+
+        if (boundary.pendingCommand != null) {
+            exits.forEach { it.executes(boundary.pendingCommand) }
+        }
+
+        return NodeBoundary(
+            entries,
+            if (boundary.onlyExecutionFragment) exits else boundary.exits
+        )
+    }
 }
