@@ -7,13 +7,12 @@ import io.papermc.paper.command.brigadier.CommandSourceStack
 sealed class ComshopCommandNode {
     class LiteralCommandNode(
         val name: String,
-        val requiresChecker: (CommandSourceStack) -> Boolean = { true }
+        val requiresChecker: (CommandSourceStack) -> Boolean = { true },
+        val commandBlock: (ComshopContext) -> Unit
     ) : ComshopCommandNode()
 
     class ArgumentNode<T>(
         val argumentType: ComshopArgumentType<T>,
         val requiresChecker: (CommandSourceStack) -> Boolean = { true }
     ) : ComshopCommandNode()
-
-    class ExecuteNode(block: (ComshopContext) -> Unit) : ComshopCommandNode()
 }
