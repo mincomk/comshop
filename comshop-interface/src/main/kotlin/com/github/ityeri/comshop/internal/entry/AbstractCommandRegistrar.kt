@@ -1,7 +1,7 @@
 package com.github.ityeri.comshop.internal.entry
 
 import com.github.ityeri.comshop.internal.node.Node
-import com.github.ityeri.comshop.internal.node.type.ComshopCommandNode
+import com.github.ityeri.comshop.internal.node.ComshopCommandNode
 import org.bukkit.plugin.java.JavaPlugin
 
 interface AbstractCommandRegistrar {

@@ -2,7 +2,7 @@ package com.github.ityeri.comshop.internal.impl
 
 import com.github.ityeri.comshop.internal.entry.AbstractCommandRegistrar
 import com.github.ityeri.comshop.internal.node.Node
-import com.github.ityeri.comshop.internal.node.type.ComshopCommandNode
+import com.github.ityeri.comshop.internal.node.ComshopCommandNode
 import com.mojang.brigadier.tree.LiteralCommandNode
 import io.papermc.paper.command.brigadier.CommandSourceStack
 import io.papermc.paper.plugin.lifecycle.event.types.LifecycleEvents

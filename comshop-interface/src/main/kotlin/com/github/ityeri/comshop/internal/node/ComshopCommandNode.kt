@@ -1,4 +1,4 @@
-package com.github.ityeri.comshop.internal.node.type
+package com.github.ityeri.comshop.internal.node
 
 import com.github.ityeri.comshop.internal.ComshopContext
 import com.github.ityeri.comshop.internal.argument.ComshopArgumentType

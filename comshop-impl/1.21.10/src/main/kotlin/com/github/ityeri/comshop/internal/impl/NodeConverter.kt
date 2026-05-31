@@ -5,7 +5,7 @@ import com.github.ityeri.comshop.internal.argument.ComshopArgumentType
 import com.github.ityeri.comshop.internal.argument.ComshopCustomArgumentType
 import com.github.ityeri.comshop.internal.argument.NativeArgumentType
 import com.github.ityeri.comshop.internal.node.Node
-import com.github.ityeri.comshop.internal.node.type.ComshopCommandNode
+import com.github.ityeri.comshop.internal.node.ComshopCommandNode
 import com.mojang.brigadier.arguments.ArgumentType
 import com.mojang.brigadier.builder.ArgumentBuilder
 import com.mojang.brigadier.builder.LiteralArgumentBuilder
