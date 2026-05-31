@@ -5,15 +5,15 @@ import com.github.ityeri.comshop.internal.argument.ComshopArgumentType
 import io.papermc.paper.command.brigadier.CommandSourceStack
 
 sealed class ComshopCommandNode {
-    class LiteralComshopCommandNode(
+    class LiteralCommandNode(
         val name: String,
         val requiresChecker: (CommandSourceStack) -> Boolean = { true }
     ) : ComshopCommandNode()
 
-    class ArgumentNodeComshop<T>(
+    class ArgumentNode<T>(
         val argumentType: ComshopArgumentType<T>,
         val requiresChecker: (CommandSourceStack) -> Boolean = { true }
     ) : ComshopCommandNode()
 
-    class ExecuteNodeComshop(block: (ComshopContext) -> Unit) : ComshopCommandNode()
+    class ExecuteNode(block: (ComshopContext) -> Unit) : ComshopCommandNode()
 }
