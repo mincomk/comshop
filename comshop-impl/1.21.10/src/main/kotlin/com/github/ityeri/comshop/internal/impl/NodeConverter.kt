@@ -7,14 +7,13 @@ import com.github.ityeri.comshop.internal.argument.NativeArgumentType
 import com.github.ityeri.comshop.internal.node.Node
 import com.github.ityeri.comshop.internal.node.ComshopCommandNode
 import com.mojang.brigadier.arguments.ArgumentType
-import com.mojang.brigadier.builder.ArgumentBuilder
 import com.mojang.brigadier.builder.LiteralArgumentBuilder
 import com.mojang.brigadier.builder.RequiredArgumentBuilder
 import io.papermc.paper.command.brigadier.CommandSourceStack
 
 
-fun convertToArgumentBuilderNode(node: Node<ComshopCommandNode>): Node<UnifiedArgumentBuilder> =
-    nodePTraversal<ComshopCommandNode, UnifiedArgumentBuilder>()
+fun convertToArgumentBuilderNode(node: Node<ComshopCommandNode>): Node<UnionArgumentBuilder> =
+    nodePTraversal<ComshopCommandNode, UnionArgumentBuilder>()
         .modify(
             node,
             { commandNode ->
@@ -22,7 +21,7 @@ fun convertToArgumentBuilderNode(node: Node<ComshopCommandNode>): Node<UnifiedAr
             }
         )
 
-fun convertToArgumentBuilder(commandNode: ComshopCommandNode): UnifiedArgumentBuilder =
+fun convertToArgumentBuilder(commandNode: ComshopCommandNode): UnionArgumentBuilder =
     when (commandNode) {
         is ComshopCommandNode.LiteralCommandNode -> {
             LiteralArgumentBuilder
