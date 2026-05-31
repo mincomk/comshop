@@ -56,7 +56,7 @@ fun <T> convertToArgumentBuilder(commandNode: ComshopCommandNode.ArgumentNode<T>
 fun <T> convertToArgumentType(argumentType: ComshopArgumentType<T>): ArgumentType<T> =
     when (argumentType) {
         is NativeArgumentType -> {
-            TODO()
+            convertNativeArgumentType(argumentType)
         }
         is ComshopCustomArgumentType<T, *> -> {
             TODO()
