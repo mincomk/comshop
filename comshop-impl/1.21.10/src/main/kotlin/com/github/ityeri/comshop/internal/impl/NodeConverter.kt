@@ -28,20 +28,26 @@ fun convertToArgumentBuilder(commandNode: ComshopCommandNode): UnifiedArgumentBu
             LiteralArgumentBuilder
                 .literal<CommandSourceStack>(commandNode.name)
                 .requires(commandNode.requiresChecker)
+        }
+        is ComshopCommandNode.ArgumentNode<*> -> {
+            convertToArgumentBuilder(commandNode)
+        }
+        is ComshopCommandNode.ExecuteNode -> {
+            LiteralArgumentBuilder
+                .literal<CommandSourceStack>("EOC")
                 .executes { ctx ->
                     commandNode.commandBlock(
                         object : ComshopContext {
-                            override val source: CommandSourceStack = ctx.source
-                            override fun <T> getArgument(name: String, clazz: Class<T>): T =
-                                ctx.getArgument(name, clazz)
+                            override val source = ctx.source
+
+                            override fun <T> getArgument(name: String, clazz: Class<T>): T {
+                                return ctx.getArgument(name, clazz)
+                            }
                         }
                     )
 
                     0
                 }
-        }
-        is ComshopCommandNode.ArgumentNode<*> -> {
-            convertToArgumentBuilder(commandNode)
         }
     }
 
