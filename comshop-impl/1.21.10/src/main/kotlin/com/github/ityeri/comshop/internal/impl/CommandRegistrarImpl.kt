@@ -17,8 +17,8 @@ class CommandRegistrarImpl : AbstractCommandRegistrar {
             val commands = event.registrar()
 
             for (node in nodes) {
-                val convertedNode = convertToArgumentBuilderNode(node)
-                val boundary = connectArgumentBuilders(convertedNode)
+                val convertedNode = toCommandFragmentNode(node)
+                val boundary = connectCommandFragments(convertedNode)
 
                 if (boundary.entries.size != 1) {
                     throw IllegalArgumentException("??")

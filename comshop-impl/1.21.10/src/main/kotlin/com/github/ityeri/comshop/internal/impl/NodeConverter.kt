@@ -12,41 +12,43 @@ import com.mojang.brigadier.builder.RequiredArgumentBuilder
 import io.papermc.paper.command.brigadier.CommandSourceStack
 
 
-fun convertToArgumentBuilderNode(node: Node<ComshopCommandNode>): Node<UnionArgumentBuilder> =
-    nodePTraversal<ComshopCommandNode, UnionArgumentBuilder>()
+fun toCommandFragmentNode(node: Node<ComshopCommandNode>): Node<CommandFragment> =
+    nodePTraversal<ComshopCommandNode, CommandFragment>()
         .modify(
             node,
             { commandNode ->
-                convertToArgumentBuilder(commandNode)
+                toCommandFragment(commandNode)
             }
         )
 
-fun convertToArgumentBuilder(commandNode: ComshopCommandNode): UnionArgumentBuilder =
+fun toCommandFragment(commandNode: ComshopCommandNode): CommandFragment =
     when (commandNode) {
         is ComshopCommandNode.LiteralCommandNode -> {
-            LiteralArgumentBuilder
-                .literal<CommandSourceStack>(commandNode.name)
-                .requires(commandNode.requiresChecker)
+            CommandFragment.ArgumentFragment(
+                LiteralArgumentBuilder
+                    .literal<CommandSourceStack>(commandNode.name)
+                    .requires(commandNode.requiresChecker)
+            )
         }
         is ComshopCommandNode.ArgumentNode<*> -> {
-            convertToArgumentBuilder(commandNode)
+            CommandFragment.ArgumentFragment(
+                convertToArgumentBuilder(commandNode)
+            )
         }
         is ComshopCommandNode.ExecuteNode -> {
-            LiteralArgumentBuilder
-                .literal<CommandSourceStack>("EOC")
-                .executes { ctx ->
-                    commandNode.commandBlock(
-                        object : ComshopContext {
-                            override val source = ctx.source
+            CommandFragment.ExecutionFragment { ctx ->
+                commandNode.commandBlock(
+                    object : ComshopContext {
+                        override val source = ctx.source
 
-                            override fun <T> getArgument(name: String, clazz: Class<T>): T {
-                                return ctx.getArgument(name, clazz)
-                            }
+                        override fun <T> getArgument(name: String, clazz: Class<T>): T {
+                            return ctx.getArgument(name, clazz)
                         }
-                    )
+                    }
+                )
 
-                    0
-                }
+                0
+            }
         }
     }
 
