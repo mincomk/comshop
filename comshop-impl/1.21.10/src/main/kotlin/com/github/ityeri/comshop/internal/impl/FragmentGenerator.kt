@@ -24,15 +24,20 @@ fun toCommandFragmentNode(node: Node<ComshopCommandNode>): Node<CommandFragment>
 fun toCommandFragment(commandNode: ComshopCommandNode): CommandFragment =
     when (commandNode) {
         is ComshopCommandNode.LiteralCommandNode -> {
-            CommandFragment.ArgumentFragment(
-                LiteralArgumentBuilder
-                    .literal<CommandSourceStack>(commandNode.name)
-                    .requires(commandNode.requiresChecker)
+            CommandFragment.NodeBuilderFragment(
+                CommandNodeBuilder.LiteralNodeBuilder(
+                    commandNode.name, commandNode.requiresChecker
+                )
             )
         }
         is ComshopCommandNode.ArgumentNode<*> -> {
-            CommandFragment.ArgumentFragment(
-                convertToArgumentBuilder(commandNode)
+            CommandFragment.NodeBuilderFragment(
+                CommandNodeBuilder.ArgumentNodeBuilder(
+                    commandNode.name,
+                    convertToArgumentType(commandNode.argumentType),
+                    commandNode.requiresChecker,
+                    null // TODO after suggestion feature implemented
+                )
             )
         }
         is ComshopCommandNode.ExecutionNode -> {
@@ -51,12 +56,6 @@ fun toCommandFragment(commandNode: ComshopCommandNode): CommandFragment =
             }
         }
     }
-
-fun <T> convertToArgumentBuilder(commandNode: ComshopCommandNode.ArgumentNode<T>): RequiredArgumentBuilder<CommandSourceStack, T> =
-    RequiredArgumentBuilder.argument<CommandSourceStack, T>(
-        commandNode.name,
-        convertToArgumentType(commandNode.argumentType)
-    ).requires(commandNode.requiresChecker)
 
 fun <T> convertToArgumentType(argumentType: ComshopArgumentType<T>): ArgumentType<T> =
     when (argumentType) {
