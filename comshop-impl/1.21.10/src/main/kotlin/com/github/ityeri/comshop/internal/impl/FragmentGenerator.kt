@@ -56,16 +56,3 @@ fun toCommandFragment(commandNode: ComshopCommandNode): CommandFragment =
             }
         }
     }
-
-fun <T> convertToArgumentType(argumentType: ComshopArgumentType<T>): ArgumentType<T> =
-    when (argumentType) {
-        is NativeArgumentType -> {
-            convertNativeArgumentType(argumentType)
-        }
-        is ComshopCustomArgumentType<T, *> -> {
-            TODO()
-        }
-        else -> {
-            throw IllegalArgumentException("Unexpected ComshopArgumentTypes's subtype was passed")
-        }
-    }

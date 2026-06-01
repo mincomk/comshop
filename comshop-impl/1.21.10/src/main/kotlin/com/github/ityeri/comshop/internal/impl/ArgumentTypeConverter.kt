@@ -1,0 +1,20 @@
+package com.github.ityeri.comshop.internal.impl
+
+import com.github.ityeri.comshop.internal.argument.ComshopArgumentType
+import com.github.ityeri.comshop.internal.argument.ComshopCustomArgumentType
+import com.github.ityeri.comshop.internal.argument.NativeArgumentType
+import com.mojang.brigadier.arguments.ArgumentType
+
+
+fun <T> convertToArgumentType(argumentType: ComshopArgumentType<T>): ArgumentType<T> =
+    when (argumentType) {
+        is NativeArgumentType -> {
+            convertNativeArgumentType(argumentType)
+        }
+        is ComshopCustomArgumentType<T, *> -> {
+            TODO()
+        }
+        else -> {
+            throw IllegalArgumentException("Unexpected ComshopArgumentTypes's subtype was passed")
+        }
+    }
