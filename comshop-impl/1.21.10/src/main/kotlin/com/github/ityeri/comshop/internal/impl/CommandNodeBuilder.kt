@@ -12,7 +12,7 @@ import java.util.function.Predicate
 
 sealed class CommandNodeBuilder {
     val children: MutableList<CommandNodeBuilder> = mutableListOf()
-    val command: Command<CommandSourceStack>? = null
+    var command: Command<CommandSourceStack>? = null
     abstract val requiresChecker: Predicate<CommandSourceStack>?
 
     abstract fun build(): CommandNode<CommandSourceStack>
