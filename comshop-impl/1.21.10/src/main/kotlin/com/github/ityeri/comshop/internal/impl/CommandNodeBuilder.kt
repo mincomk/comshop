@@ -13,11 +13,14 @@ import java.util.function.Predicate
 sealed class CommandNodeBuilder {
     val children: MutableList<CommandNodeBuilder> = mutableListOf()
     val command: Command<CommandSourceStack>? = null
-    val requiresChecker: Predicate<CommandSourceStack>? = null
+    abstract val requiresChecker: Predicate<CommandSourceStack>?
 
     abstract fun build(): CommandNode<CommandSourceStack>
 
-    class LiteralNodeBuilder(val literal: String) : CommandNodeBuilder() {
+    class LiteralNodeBuilder(
+        val literal: String,
+        override val requiresChecker: Predicate<CommandSourceStack>? = null
+    ) : CommandNodeBuilder() {
         override fun build(): CommandNode<CommandSourceStack> {
             val node = LiteralCommandNode(
                 literal,
@@ -37,6 +40,7 @@ sealed class CommandNodeBuilder {
     class ArgumentNodeBuilder<T>(
         val name: String,
         val argumentType: ArgumentType<T>,
+        override val requiresChecker: Predicate<CommandSourceStack>? = null
         val suggestionProvider: SuggestionProvider<CommandSourceStack>? = null
     ) : CommandNodeBuilder() {
         override fun build(): CommandNode<CommandSourceStack> {
