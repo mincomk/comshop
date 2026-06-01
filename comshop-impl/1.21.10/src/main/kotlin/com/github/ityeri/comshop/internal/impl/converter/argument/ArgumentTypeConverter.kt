@@ -9,7 +9,7 @@ import com.mojang.brigadier.arguments.ArgumentType
 fun <T> convertToArgumentType(argumentType: ComshopArgumentType<T>): ArgumentType<T> =
     when (argumentType) {
         is NativeArgumentType -> {
-            convertNativeArgumentType(argumentType)
+            convertToArgumentType(argumentType)
         }
         is ComshopCustomArgumentType<T, *> -> {
             TODO()
