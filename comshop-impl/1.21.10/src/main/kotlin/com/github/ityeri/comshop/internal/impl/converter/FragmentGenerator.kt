@@ -1,6 +1,7 @@
 package com.github.ityeri.comshop.internal.impl.converter
 
 import com.github.ityeri.comshop.internal.ComshopContext
+import com.github.ityeri.comshop.internal.argument.ComshopArgumentType
 import com.github.ityeri.comshop.internal.impl.CommandFragment
 import com.github.ityeri.comshop.internal.impl.CommandNodeBuilder
 import com.github.ityeri.comshop.internal.impl.converter.argument.convertToArgumentType
@@ -31,7 +32,8 @@ fun toCommandFragment(commandNode: ComshopCommandNode): CommandFragment =
             CommandFragment.NodeBuilderFragment(
                 CommandNodeBuilder.ArgumentNodeBuilder(
                     commandNode.name,
-                    convertToArgumentType(commandNode.argumentType),
+                    @Suppress("UNCHECKED_CAST")
+                    convertToArgumentType(commandNode.argumentType as ComshopArgumentType<Any>),
                     commandNode.requiresChecker,
                     null // TODO after suggestion feature implemented
                 )

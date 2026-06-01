@@ -6,19 +6,19 @@ import com.github.ityeri.comshop.internal.argument.NativeArgumentType
 import com.mojang.brigadier.arguments.ArgumentType
 
 
-fun <T> convertToArgumentType(argumentType: ComshopArgumentType<T>): ArgumentType<T> =
+fun <T : Any> convertToArgumentType(argumentType: ComshopArgumentType<T>): ArgumentType<T> =
     when (argumentType) {
         is NativeArgumentType -> {
             convertNativeArgumentType(argumentType)
         }
         is ComshopCustomArgumentType<T, *> -> {
-            convertCustomArgumentWrap(argumentType)
+            convertCustomArgumentWrap<T, Any>(argumentType)
         }
         else -> {
             throw IllegalArgumentException("Unexpected ComshopArgumentTypes's subtype was passed")
         }
     }
 
-fun <T, N> convertCustomArgumentWrap(argumentType: ComshopCustomArgumentType<T, N>): ArgumentType<T> {
-    return convertCustomArgumentWrap(argumentType)
-}
+private fun <T : Any, N: Any> convertCustomArgumentWrap(argumentType: ComshopCustomArgumentType<T, *>): ArgumentType<T> =
+    @Suppress("UNCHECKED_CAST")
+    convertCustomArgumentType(argumentType as ComshopCustomArgumentType<T, N>)
