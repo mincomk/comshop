@@ -40,7 +40,7 @@ sealed class CommandNodeBuilder {
     class ArgumentNodeBuilder<T>(
         val name: String,
         val argumentType: ArgumentType<T>,
-        override val requiresChecker: Predicate<CommandSourceStack>? = null
+        override val requiresChecker: Predicate<CommandSourceStack>? = null,
         val suggestionProvider: SuggestionProvider<CommandSourceStack>? = null
     ) : CommandNodeBuilder() {
         override fun build(): CommandNode<CommandSourceStack> {
