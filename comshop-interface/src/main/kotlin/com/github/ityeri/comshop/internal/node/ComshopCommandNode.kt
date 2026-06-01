@@ -16,7 +16,7 @@ sealed class ComshopCommandNode {
         val requiresChecker: (CommandSourceStack) -> Boolean = { true }
     ) : ComshopCommandNode()
 
-    class ExecuteNode(
+    class ExecutionNode(
         val commandBlock: (ComshopContext) -> Unit
     ) : ComshopCommandNode()
 }

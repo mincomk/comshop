@@ -35,7 +35,7 @@ fun toCommandFragment(commandNode: ComshopCommandNode): CommandFragment =
                 convertToArgumentBuilder(commandNode)
             )
         }
-        is ComshopCommandNode.ExecuteNode -> {
+        is ComshopCommandNode.ExecutionNode -> {
             CommandFragment.ExecutionFragment { ctx ->
                 commandNode.commandBlock(
                     object : ComshopContext {
