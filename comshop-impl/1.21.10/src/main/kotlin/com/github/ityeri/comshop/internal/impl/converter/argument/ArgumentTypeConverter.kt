@@ -1,4 +1,4 @@
-package com.github.ityeri.comshop.internal.impl
+package com.github.ityeri.comshop.internal.impl.converter.argument
 
 import com.github.ityeri.comshop.internal.argument.ComshopArgumentType
 import com.github.ityeri.comshop.internal.argument.ComshopCustomArgumentType

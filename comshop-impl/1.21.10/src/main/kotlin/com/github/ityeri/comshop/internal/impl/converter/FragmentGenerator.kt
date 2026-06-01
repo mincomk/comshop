@@ -1,15 +1,12 @@
-package com.github.ityeri.comshop.internal.impl
+package com.github.ityeri.comshop.internal.impl.converter
 
 import com.github.ityeri.comshop.internal.ComshopContext
-import com.github.ityeri.comshop.internal.argument.ComshopArgumentType
-import com.github.ityeri.comshop.internal.argument.ComshopCustomArgumentType
-import com.github.ityeri.comshop.internal.argument.NativeArgumentType
+import com.github.ityeri.comshop.internal.impl.CommandFragment
+import com.github.ityeri.comshop.internal.impl.CommandNodeBuilder
+import com.github.ityeri.comshop.internal.impl.converter.argument.convertToArgumentType
+import com.github.ityeri.comshop.internal.impl.nodePTraversal
 import com.github.ityeri.comshop.internal.node.Node
 import com.github.ityeri.comshop.internal.node.ComshopCommandNode
-import com.mojang.brigadier.arguments.ArgumentType
-import com.mojang.brigadier.builder.LiteralArgumentBuilder
-import com.mojang.brigadier.builder.RequiredArgumentBuilder
-import io.papermc.paper.command.brigadier.CommandSourceStack
 
 
 fun toCommandFragmentNode(node: Node<ComshopCommandNode>): Node<CommandFragment> =
