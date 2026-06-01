@@ -1,6 +1,8 @@
 package com.github.ityeri.comshop.internal.impl
 
 import com.github.ityeri.comshop.internal.entry.AbstractCommandRegistrar
+import com.github.ityeri.comshop.internal.impl.converter.connectCommandFragments
+import com.github.ityeri.comshop.internal.impl.converter.toCommandFragmentNode
 import com.github.ityeri.comshop.internal.node.ComshopCommandNode
 import com.github.ityeri.comshop.internal.node.Node
 import com.mojang.brigadier.tree.LiteralCommandNode

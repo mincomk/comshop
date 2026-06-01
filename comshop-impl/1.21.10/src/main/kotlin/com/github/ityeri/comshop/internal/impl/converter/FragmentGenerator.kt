@@ -4,7 +4,7 @@ import com.github.ityeri.comshop.internal.ComshopContext
 import com.github.ityeri.comshop.internal.impl.CommandFragment
 import com.github.ityeri.comshop.internal.impl.CommandNodeBuilder
 import com.github.ityeri.comshop.internal.impl.converter.argument.convertToArgumentType
-import com.github.ityeri.comshop.internal.impl.nodePTraversal
+import com.github.ityeri.comshop.internal.impl.optic.nodePTraversal
 import com.github.ityeri.comshop.internal.node.Node
 import com.github.ityeri.comshop.internal.node.ComshopCommandNode
 
