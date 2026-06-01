@@ -12,7 +12,7 @@ fun <T> convertToArgumentType(argumentType: ComshopArgumentType<T>): ArgumentTyp
             convertToArgumentType(argumentType)
         }
         is ComshopCustomArgumentType<T, *> -> {
-            TODO()
+            convertToArgumentType(argumentType)
         }
         else -> {
             throw IllegalArgumentException("Unexpected ComshopArgumentTypes's subtype was passed")
