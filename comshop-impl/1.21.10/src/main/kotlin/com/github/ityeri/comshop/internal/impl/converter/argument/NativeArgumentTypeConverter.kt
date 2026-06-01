@@ -5,7 +5,7 @@ import com.github.ityeri.comshop.internal.argument.StringType
 import com.mojang.brigadier.arguments.*
 
 
-fun <T> convertToArgumentType(argumentType: NativeArgumentType<T>): ArgumentType<T> =
+fun <T> convertNativeArgumentType(argumentType: NativeArgumentType<T>): ArgumentType<T> =
     when (argumentType) {
         is NativeArgumentType.BoolArgumentType -> {
             @Suppress("UNCHECKED_CAST")

@@ -9,12 +9,16 @@ import com.mojang.brigadier.arguments.ArgumentType
 fun <T> convertToArgumentType(argumentType: ComshopArgumentType<T>): ArgumentType<T> =
     when (argumentType) {
         is NativeArgumentType -> {
-            convertToArgumentType(argumentType)
+            convertNativeArgumentType(argumentType)
         }
         is ComshopCustomArgumentType<T, *> -> {
-            convertToArgumentType(argumentType)
+            convertCustomArgumentWrap(argumentType)
         }
         else -> {
             throw IllegalArgumentException("Unexpected ComshopArgumentTypes's subtype was passed")
         }
     }
+
+fun <T, N> convertCustomArgumentWrap(argumentType: ComshopCustomArgumentType<T, N>): ArgumentType<T> {
+    return convertCustomArgumentWrap(argumentType)
+}

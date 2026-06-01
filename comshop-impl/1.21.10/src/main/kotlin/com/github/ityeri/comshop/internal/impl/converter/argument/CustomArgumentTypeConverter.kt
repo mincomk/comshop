@@ -10,11 +10,10 @@ import io.papermc.paper.command.brigadier.CommandSourceStack
 import io.papermc.paper.command.brigadier.MessageComponentSerializer
 import io.papermc.paper.command.brigadier.argument.CustomArgumentType
 import net.kyori.adventure.text.Component
-import net.kyori.adventure.text.minimessage.MiniMessage
 import java.util.concurrent.CompletableFuture
 
 
-fun <T : Any, N : Any> convertToArgumentType(argumentType: ComshopCustomArgumentType<T, N>): ArgumentType<T> =
+fun <T : Any, N : Any> convertCustomArgumentType(argumentType: ComshopCustomArgumentType<T, N>): ArgumentType<T> =
     object : CustomArgumentType.Converted<T, N> {
         override fun convert(nativeType: N): T {
             throw NotImplementedError(
@@ -35,7 +34,7 @@ fun <T : Any, N : Any> convertToArgumentType(argumentType: ComshopCustomArgument
             }
 
         override fun getNativeType(): ArgumentType<N> =
-            convertToArgumentType(argumentType.nativeArgumentType)
+            convertNativeArgumentType(argumentType.nativeArgumentType)
 
         override fun <S : Any> listSuggestions(
             context: CommandContext<S>,
