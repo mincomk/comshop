@@ -8,7 +8,7 @@ fun connectCommandFragments(node: Node<CommandFragment>): CommandTreeBoundary =
         nodePTraversal<CommandFragment, CommandTreeBoundary>()
             .modify(node, { fragment ->
                 when (fragment) {
-                    is CommandFragment.ArgumentFragment<*> -> {
+                    is CommandFragment.NodeBuilderFragment -> {
                         CommandTreeBoundary(listOf(fragment.builder), listOf(fragment.builder))
                     }
                     is CommandFragment.ExecutionFragment -> {
