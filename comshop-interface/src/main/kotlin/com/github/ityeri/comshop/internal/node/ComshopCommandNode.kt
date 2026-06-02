@@ -18,7 +18,8 @@ sealed class ComshopCommandNode {
         val name: String,
         val argumentType: ComshopArgumentType<T>,
         val requiresChecker: (CommandSourceStack) -> Boolean = { true },
-        val suggestionProvider: (CommandWritingContext, CommandSourceStack) -> Iterable<SuggestionElement>,
+        val suggestionProvider: (CommandWritingContext, CommandSourceStack) -> Iterable<SuggestionElement> =
+            { _, _ -> emptyList() },
         val onlyCustomSuggestions: Boolean = false
     ) : ComshopCommandNode()
 
