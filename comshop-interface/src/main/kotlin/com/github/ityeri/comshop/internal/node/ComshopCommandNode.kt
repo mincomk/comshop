@@ -1,8 +1,10 @@
 package com.github.ityeri.comshop.internal.node
 
+import com.github.ityeri.comshop.internal.CommandResult
 import com.github.ityeri.comshop.internal.ComshopContext
 import com.github.ityeri.comshop.internal.argument.ComshopArgumentType
 import io.papermc.paper.command.brigadier.CommandSourceStack
+
 
 sealed class ComshopCommandNode {
     class LiteralCommandNode(
@@ -17,6 +19,6 @@ sealed class ComshopCommandNode {
     ) : ComshopCommandNode()
 
     class ExecutionNode(
-        val commandBlock: (ComshopContext) -> Unit
+        val commandBlock: (ComshopContext) -> CommandResult
     ) : ComshopCommandNode()
 }

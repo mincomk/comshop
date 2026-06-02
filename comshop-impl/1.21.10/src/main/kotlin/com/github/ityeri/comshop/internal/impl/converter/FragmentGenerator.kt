@@ -6,8 +6,8 @@ import com.github.ityeri.comshop.internal.impl.CommandFragment
 import com.github.ityeri.comshop.internal.impl.CommandNodeBuilder
 import com.github.ityeri.comshop.internal.impl.converter.argument.convertToArgumentType
 import com.github.ityeri.comshop.internal.impl.optic.nodePTraversal
-import com.github.ityeri.comshop.internal.node.Node
 import com.github.ityeri.comshop.internal.node.ComshopCommandNode
+import com.github.ityeri.comshop.internal.node.Node
 
 
 fun toCommandFragmentNode(node: Node<ComshopCommandNode>): Node<CommandFragment> =
@@ -41,7 +41,7 @@ fun toCommandFragment(commandNode: ComshopCommandNode): CommandFragment =
         }
         is ComshopCommandNode.ExecutionNode -> {
             CommandFragment.ExecutionFragment { ctx ->
-                commandNode.commandBlock(
+                 commandNode.commandBlock(
                     object : ComshopContext {
                         override val source = ctx.source
 
@@ -49,9 +49,7 @@ fun toCommandFragment(commandNode: ComshopCommandNode): CommandFragment =
                             return ctx.getArgument(name, clazz)
                         }
                     }
-                )
-
-                0
+                ).toInt()
             }
         }
     }
