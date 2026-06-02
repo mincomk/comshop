@@ -1,8 +1,8 @@
 package com.github.ityeri.comshop.internal.impl.converter.argument
 
-import com.github.ityeri.comshop.internal.CommandWritingContext
 import com.github.ityeri.comshop.internal.argument.ComshopCustomArgumentType
 import com.github.ityeri.comshop.internal.exception.ComshopCommandException
+import com.github.ityeri.comshop.internal.impl.converter.toBrigadierSuggestionProvider
 import com.mojang.brigadier.StringReader
 import com.mojang.brigadier.arguments.ArgumentType
 import com.mojang.brigadier.context.CommandContext
@@ -11,14 +11,14 @@ import com.mojang.brigadier.exceptions.SimpleCommandExceptionType
 import com.mojang.brigadier.suggestion.Suggestions
 import com.mojang.brigadier.suggestion.SuggestionsBuilder
 import io.papermc.paper.command.brigadier.CommandSourceStack
-import io.papermc.paper.command.brigadier.MessageComponentSerializer
 import io.papermc.paper.command.brigadier.argument.CustomArgumentType
-import net.kyori.adventure.text.Component
 import java.util.concurrent.CompletableFuture
 
 
 fun <T : Any, N : Any> convertCustomArgumentType(argumentType: ComshopCustomArgumentType<T, N>): ArgumentType<T> =
     object : CustomArgumentType<T, N> {
+        val suggestionProvider = toBrigadierSuggestionProvider(argumentType::suggest)
+
         override fun parse(reader: StringReader): T {
             throw NotImplementedError(
                 "The ComshopCustomArgumentType does not support parsing without a source value"
@@ -55,24 +55,10 @@ fun <T : Any, N : Any> convertCustomArgumentType(argumentType: ComshopCustomArgu
                 throw NotImplementedError(
                     "The ComshopCustomArgumentType only support a CommandSourceStack as source value"
                 )
+            } else {
+                @Suppress("UNCHECKED_CAST")
+                return suggestionProvider.getSuggestions(context as CommandContext<CommandSourceStack>, builder)
             }
-
-            argumentType.suggest(
-                CommandWritingContext(builder.input, builder.start),
-                context.source as CommandSourceStack
-            ).forEach { suggestionElement ->
-                if (suggestionElement.tooltipMessage == null) {
-                    builder.suggest(suggestionElement.text)
-                } else {
-                    builder.suggest(
-                        suggestionElement.text,
-                        MessageComponentSerializer.message()
-                            .serialize(suggestionElement.tooltipMessage as Component)
-                    )
-                }
-            }
-
-            return builder.buildFuture()
         }
 
         override fun getNativeType(): ArgumentType<N> = convertNativeArgumentType(argumentType.nativeArgumentType)
