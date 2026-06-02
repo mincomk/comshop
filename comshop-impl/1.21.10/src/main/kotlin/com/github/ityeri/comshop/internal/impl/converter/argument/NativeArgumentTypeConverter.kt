@@ -5,31 +5,31 @@ import com.github.ityeri.comshop.internal.argument.StringType
 import com.mojang.brigadier.arguments.*
 
 
-fun <T : Any> convertNativeArgumentType(argumentType: NativeArgumentType<T>): ArgumentType<T> =
-    when (argumentType) {
+fun <T : Any> NativeArgumentType<T>.toBrigadierArgumentType(): ArgumentType<T> =
+    when (this) {
         is NativeArgumentType.BoolArgumentType -> {
             @Suppress("UNCHECKED_CAST")
             BoolArgumentType.bool() as ArgumentType<T>
         }
         is NativeArgumentType.IntArgumentType -> {
             @Suppress("UNCHECKED_CAST")
-            IntegerArgumentType.integer(argumentType.min, argumentType.max) as ArgumentType<T>
+            IntegerArgumentType.integer(this.min, this.max) as ArgumentType<T>
         }
         is NativeArgumentType.FloatArgumentType -> {
             @Suppress("UNCHECKED_CAST")
-            FloatArgumentType.floatArg(argumentType.min, argumentType.max) as ArgumentType<T>
+            FloatArgumentType.floatArg(this.min, this.max) as ArgumentType<T>
         }
         is NativeArgumentType.DoubleArgumentType -> {
             @Suppress("UNCHECKED_CAST")
-            DoubleArgumentType.doubleArg(argumentType.min, argumentType.max) as ArgumentType<T>
+            DoubleArgumentType.doubleArg(this.min, this.max) as ArgumentType<T>
         }
         is NativeArgumentType.LongArgumentType -> {
             @Suppress("UNCHECKED_CAST")
-            LongArgumentType.longArg(argumentType.min, argumentType.max) as ArgumentType<T>
+            LongArgumentType.longArg(this.min, this.max) as ArgumentType<T>
         }
         is NativeArgumentType.StringArgumentType -> {
             @Suppress("UNCHECKED_CAST")
-            when (argumentType.type) {
+            when (this.type) {
                 StringType.WORD -> StringArgumentType.word()
                 StringType.QUOTED -> StringArgumentType.string()
                 StringType.GREEDY -> StringArgumentType.greedyString()

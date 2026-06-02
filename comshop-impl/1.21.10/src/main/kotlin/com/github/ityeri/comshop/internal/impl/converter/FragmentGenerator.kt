@@ -1,10 +1,9 @@
 package com.github.ityeri.comshop.internal.impl.converter
 
 import com.github.ityeri.comshop.internal.ComshopContext
-import com.github.ityeri.comshop.internal.argument.ComshopArgumentType
 import com.github.ityeri.comshop.internal.impl.CommandFragment
 import com.github.ityeri.comshop.internal.impl.CommandNodeBuilder
-import com.github.ityeri.comshop.internal.impl.converter.argument.convertToArgumentType
+import com.github.ityeri.comshop.internal.impl.converter.argument.toBrigadierArgumentType
 import com.github.ityeri.comshop.internal.impl.optic.nodePTraversal
 import com.github.ityeri.comshop.internal.node.ComshopCommandNode
 import com.github.ityeri.comshop.internal.node.Node
@@ -32,10 +31,7 @@ fun toCommandFragment(commandNode: ComshopCommandNode): CommandFragment =
             CommandFragment.NodeBuilderFragment(
                 CommandNodeBuilder.ArgumentNodeBuilder(
                     commandNode.name,
-                    argumentType = convertToArgumentType(
-                        @Suppress("UNCHECKED_CAST")
-                        commandNode.argumentType as ComshopArgumentType<Any>
-                    ),
+                    argumentType = commandNode.argumentType.toBrigadierArgumentType(),
                     requiresChecker =  commandNode.requiresChecker,
                     suggestionProvider =  commandNode.customSuggestionProvider?.let { provider ->
                         toBrigadierSuggestionProvider(provider)
