@@ -21,7 +21,6 @@ sealed class ComshopCommandNode {
         val argumentType: ComshopArgumentType<T>,
         val requiresChecker: (CommandSourceStack) -> Boolean = { true },
         val customSuggestionProvider: ComshopSuggestionProvider? = null,
-        val onlyCustomSuggestions: Boolean = false
     ) : ComshopCommandNode()
 
     class ExecutionNode(
