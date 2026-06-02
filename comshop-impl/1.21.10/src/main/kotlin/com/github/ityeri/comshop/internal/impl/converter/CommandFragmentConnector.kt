@@ -1,21 +1,21 @@
 package com.github.ityeri.comshop.internal.impl.converter
 
 import com.github.ityeri.comshop.internal.impl.CommandFragment
-import com.github.ityeri.comshop.internal.impl.CommandTreeBoundary
+import com.github.ityeri.comshop.internal.impl.BuilderBoundary
 import com.github.ityeri.comshop.internal.impl.optic.nodePTraversal
 import com.github.ityeri.comshop.internal.node.Node
 
 
-fun connectCommandFragments(node: Node<CommandFragment>): CommandTreeBoundary =
-    connectCommendTreeBoundaries(
-        nodePTraversal<CommandFragment, CommandTreeBoundary>()
+fun connectCommandFragments(node: Node<CommandFragment>): BuilderBoundary =
+    connectBuilderBoundaries(
+        nodePTraversal<CommandFragment, BuilderBoundary>()
             .modify(node, { fragment ->
                 when (fragment) {
                     is CommandFragment.NodeBuilderFragment -> {
-                        CommandTreeBoundary(listOf(fragment.builder), listOf(fragment.builder))
+                        BuilderBoundary(listOf(fragment.builder), listOf(fragment.builder))
                     }
                     is CommandFragment.ExecutionFragment -> {
-                        CommandTreeBoundary(
+                        BuilderBoundary(
                             entries = emptyList(),
                             exits = emptyList(),
                             pendingCommand = fragment.command
@@ -25,31 +25,31 @@ fun connectCommandFragments(node: Node<CommandFragment>): CommandTreeBoundary =
             })
     )
 
-fun connectCommendTreeBoundaries(node: Node<CommandTreeBoundary>): CommandTreeBoundary =
+fun connectBuilderBoundaries(node: Node<BuilderBoundary>): BuilderBoundary =
     when (node) {
         is Node.SingleNode -> {
             node.value
         }
         is Node.UnionNode -> {
-            val boundaries = node.nodes.map { connectCommendTreeBoundaries(it) }
+            val boundaries = node.nodes.map { connectBuilderBoundaries(it) }
 
-            CommandTreeBoundary(
+            BuilderBoundary(
                 boundaries.flatMap { it.entries },
                 boundaries.flatMap { it.exits }
             )
         }
         is Node.ChainNode -> {
             connectBoundaryChain(
-                node.nodes.map { connectCommendTreeBoundaries(it) }
+                node.nodes.map { connectBuilderBoundaries(it) }
             )
         }
     }
 
 fun connectBoundaryChain(
-    boundaries: List<CommandTreeBoundary>
-): CommandTreeBoundary =
+    boundaries: List<BuilderBoundary>
+): BuilderBoundary =
     if (boundaries.isEmpty()) {
-        CommandTreeBoundary(listOf(), listOf())
+        BuilderBoundary(listOf(), listOf())
     } else if (boundaries.size == 1) {
         boundaries.first()
     } else {

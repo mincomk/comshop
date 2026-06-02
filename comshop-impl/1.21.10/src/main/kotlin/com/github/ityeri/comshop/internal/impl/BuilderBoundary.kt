@@ -4,7 +4,7 @@ import com.mojang.brigadier.Command
 import io.papermc.paper.command.brigadier.CommandSourceStack
 
 
-class CommandTreeBoundary(
+class BuilderBoundary(
     val entries: Collection<BrigadierNodeBuilder>,
     val exits: Collection<BrigadierNodeBuilder>,
     val pendingCommand: Command<CommandSourceStack>? = null
@@ -12,7 +12,7 @@ class CommandTreeBoundary(
     val onlyExecutionFragment: Boolean
         get() = pendingCommand != null && exits.isEmpty()
 
-    fun connectNext(boundary: CommandTreeBoundary): CommandTreeBoundary {
+    fun connectNext(boundary: BuilderBoundary): BuilderBoundary {
         exits.forEach { exitBuilder ->
             boundary.entries.forEach { entryBuilder ->
                 exitBuilder.children.add(entryBuilder)
@@ -23,7 +23,7 @@ class CommandTreeBoundary(
             exits.forEach { it.command = boundary.pendingCommand }
         }
 
-        return CommandTreeBoundary(
+        return BuilderBoundary(
             entries,
             if (boundary.onlyExecutionFragment) exits else boundary.exits
         )
