@@ -32,10 +32,14 @@ fun toCommandFragment(commandNode: ComshopCommandNode): CommandFragment =
             CommandFragment.NodeBuilderFragment(
                 CommandNodeBuilder.ArgumentNodeBuilder(
                     commandNode.name,
-                    @Suppress("UNCHECKED_CAST")
-                    convertToArgumentType(commandNode.argumentType as ComshopArgumentType<Any>),
-                    commandNode.requiresChecker,
-                    null // TODO after suggestion feature implemented
+                    argumentType = convertToArgumentType(
+                        @Suppress("UNCHECKED_CAST")
+                        commandNode.argumentType as ComshopArgumentType<Any>
+                    ),
+                    requiresChecker =  commandNode.requiresChecker,
+                    suggestionProvider =  commandNode.customSuggestionProvider?.let { provider ->
+                        toBrigadierSuggestionProvider(provider)
+                    }
                 )
             )
         }
