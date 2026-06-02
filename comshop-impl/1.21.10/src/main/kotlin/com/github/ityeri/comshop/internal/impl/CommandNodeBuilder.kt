@@ -52,7 +52,7 @@ sealed class CommandNodeBuilder {
                 null,
                 null,
                 false,
-                suggestionProvider
+                suggestionProvider // TODO can compose function in here? yep.
             )
 
             children.forEach { node.addChild(it.build()) }
