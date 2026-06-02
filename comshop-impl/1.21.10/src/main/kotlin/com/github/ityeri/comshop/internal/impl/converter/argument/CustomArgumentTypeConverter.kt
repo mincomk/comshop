@@ -28,11 +28,15 @@ fun <T : Any, N : Any> convertCustomArgumentType(argumentType: ComshopCustomArgu
         override fun <S : Any> parse(reader: StringReader, source: S): T =
             when (source) {
                 is CommandSourceStack -> {
+                    val convertedValue = nativeType.parse(reader, source)
+
                     try {
-                        argumentType.parse(nativeType.parse(reader, source), source)
-                    } catch (e: ComshopCommandException) {
+                        argumentType.parse(convertedValue, source)
+                    }
+                    catch (e: ComshopCommandException) {
                         throw SimpleCommandExceptionType({ e.message }).create()
-                    } catch (e: CommandSyntaxException) {
+                    }
+                    catch (e: CommandSyntaxException) {
                         throw IllegalStateException(
                             "Method ComshopCustomArgumentType.parse cannot throw CommandSyntaxException, "
                                     + "which belongs to brigadier. Use ComshopCommandException instead",
