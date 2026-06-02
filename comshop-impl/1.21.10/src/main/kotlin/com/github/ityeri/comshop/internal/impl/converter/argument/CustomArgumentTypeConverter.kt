@@ -2,9 +2,12 @@ package com.github.ityeri.comshop.internal.impl.converter.argument
 
 import com.github.ityeri.comshop.internal.CommandWritingContext
 import com.github.ityeri.comshop.internal.argument.ComshopCustomArgumentType
+import com.github.ityeri.comshop.internal.exception.ComshopCommandException
 import com.mojang.brigadier.StringReader
 import com.mojang.brigadier.arguments.ArgumentType
 import com.mojang.brigadier.context.CommandContext
+import com.mojang.brigadier.exceptions.CommandSyntaxException
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType
 import com.mojang.brigadier.suggestion.Suggestions
 import com.mojang.brigadier.suggestion.SuggestionsBuilder
 import io.papermc.paper.command.brigadier.CommandSourceStack
@@ -25,7 +28,17 @@ fun <T : Any, N : Any> convertCustomArgumentType(argumentType: ComshopCustomArgu
         override fun <S : Any> parse(reader: StringReader, source: S): T =
             when (source) {
                 is CommandSourceStack -> {
-                    argumentType.parse(nativeType.parse(reader, source), source)
+                    try {
+                        argumentType.parse(nativeType.parse(reader, source), source)
+                    } catch (e: ComshopCommandException) {
+                        throw SimpleCommandExceptionType({ e.message }).create()
+                    } catch (e: CommandSyntaxException) {
+                        throw IllegalStateException(
+                            "Method ComshopCustomArgumentType.parse cannot throw CommandSyntaxException, "
+                                    + "which belongs to brigadier. Use ComshopCommandException instead",
+                            e
+                        )
+                    }
                 }
                 else -> {
                     throw NotImplementedError(
