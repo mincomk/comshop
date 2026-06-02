@@ -2,7 +2,7 @@ package com.github.ityeri.comshop.internal.impl.converter
 
 import com.github.ityeri.comshop.internal.ComshopContext
 import com.github.ityeri.comshop.internal.impl.CommandFragment
-import com.github.ityeri.comshop.internal.impl.CommandNodeBuilder
+import com.github.ityeri.comshop.internal.impl.BrigadierNodeBuilder
 import com.github.ityeri.comshop.internal.impl.converter.argument.toBrigadierArgumentType
 import com.github.ityeri.comshop.internal.impl.optic.nodePTraversal
 import com.github.ityeri.comshop.internal.node.ComshopCommandNode
@@ -22,14 +22,14 @@ fun toCommandFragment(commandNode: ComshopCommandNode): CommandFragment =
     when (commandNode) {
         is ComshopCommandNode.LiteralCommandNode -> {
             CommandFragment.NodeBuilderFragment(
-                CommandNodeBuilder.LiteralNodeBuilder(
+                BrigadierNodeBuilder.LiteralNodeBuilder(
                     commandNode.name, commandNode.requiresChecker
                 )
             )
         }
         is ComshopCommandNode.ArgumentNode<*> -> {
             CommandFragment.NodeBuilderFragment(
-                CommandNodeBuilder.ArgumentNodeBuilder(
+                BrigadierNodeBuilder.ArgumentNodeBuilder(
                     commandNode.name,
                     argumentType = commandNode.argumentType.toBrigadierArgumentType(),
                     requiresChecker =  commandNode.requiresChecker,

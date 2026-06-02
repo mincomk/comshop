@@ -5,8 +5,8 @@ import io.papermc.paper.command.brigadier.CommandSourceStack
 
 
 class CommandTreeBoundary(
-    val entries: Collection<CommandNodeBuilder>,
-    val exits: Collection<CommandNodeBuilder>,
+    val entries: Collection<BrigadierNodeBuilder>,
+    val exits: Collection<BrigadierNodeBuilder>,
     val pendingCommand: Command<CommandSourceStack>? = null
 ) {
     val onlyExecutionFragment: Boolean

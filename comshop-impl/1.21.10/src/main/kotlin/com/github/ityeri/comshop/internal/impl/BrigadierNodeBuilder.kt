@@ -10,8 +10,8 @@ import io.papermc.paper.command.brigadier.CommandSourceStack
 import java.util.function.Predicate
 
 
-sealed class CommandNodeBuilder {
-    val children: MutableList<CommandNodeBuilder> = mutableListOf()
+sealed class BrigadierNodeBuilder {
+    val children: MutableList<BrigadierNodeBuilder> = mutableListOf()
     var command: Command<CommandSourceStack>? = null
     abstract val requiresChecker: Predicate<CommandSourceStack>?
 
@@ -20,7 +20,7 @@ sealed class CommandNodeBuilder {
     class LiteralNodeBuilder(
         val literal: String,
         override val requiresChecker: Predicate<CommandSourceStack>? = null
-    ) : CommandNodeBuilder() {
+    ) : BrigadierNodeBuilder() {
         override fun build(): CommandNode<CommandSourceStack> {
             val node = LiteralCommandNode(
                 literal,
@@ -42,7 +42,7 @@ sealed class CommandNodeBuilder {
         val argumentType: ArgumentType<T>,
         override val requiresChecker: Predicate<CommandSourceStack>? = null,
         val suggestionProvider: SuggestionProvider<CommandSourceStack>? = null
-    ) : CommandNodeBuilder() {
+    ) : BrigadierNodeBuilder() {
         override fun build(): CommandNode<CommandSourceStack> {
             val node = ArgumentCommandNode(
                 name,
