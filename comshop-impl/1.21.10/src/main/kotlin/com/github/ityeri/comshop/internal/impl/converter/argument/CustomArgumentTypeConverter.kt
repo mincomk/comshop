@@ -15,8 +15,9 @@ import io.papermc.paper.command.brigadier.argument.CustomArgumentType
 import java.util.concurrent.CompletableFuture
 
 
-fun <T : Any, N : Any> convertCustomArgumentType(argumentType: ComshopCustomArgumentType<T, N>): ArgumentType<T> =
-    object : CustomArgumentType<T, N> {
+fun <T : Any, N : Any> convertCustomArgumentType(argumentType: ComshopCustomArgumentType<T, N>): ArgumentType<T> {
+    class Asdf : CustomArgumentType<T, N> {
+
         val suggestionProvider = toBrigadierSuggestionProvider(argumentType::suggest)
 
         override fun parse(reader: StringReader): T {
@@ -67,3 +68,6 @@ fun <T : Any, N : Any> convertCustomArgumentType(argumentType: ComshopCustomArgu
 
         override fun getNativeType(): ArgumentType<N> = convertNativeArgumentType(argumentType.nativeArgumentType)
     }
+
+    return Asdf()
+}

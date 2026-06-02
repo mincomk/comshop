@@ -1,6 +1,6 @@
 package com.github.ityeri.comshop.internal.argument
 
-sealed class NativeArgumentType<T> : ComshopArgumentType<T> {
+sealed class NativeArgumentType<T : Any> : ComshopArgumentType<T> {
     class BoolArgumentType : NativeArgumentType<Boolean>()
 
     class IntArgumentType(
