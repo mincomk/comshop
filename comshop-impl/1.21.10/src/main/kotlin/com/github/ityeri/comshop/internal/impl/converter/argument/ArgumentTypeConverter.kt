@@ -18,7 +18,3 @@ fun <T : Any> ComshopArgumentType<T>.toBrigadierArgumentType(): ArgumentType<T> 
             throw IllegalArgumentException("Unexpected ComshopArgumentTypes's subtype was passed")
         }
     }
-
-//private fun <T : Any, N: Any> convertCustomArgumentWrap(argumentType: ComshopCustomArgumentType<T, *>): ArgumentType<T> =
-//    @Suppress("UNCHECKED_CAST")
-//    convertCustomArgumentType(argumentType as ComshopCustomArgumentType<T, N>)
