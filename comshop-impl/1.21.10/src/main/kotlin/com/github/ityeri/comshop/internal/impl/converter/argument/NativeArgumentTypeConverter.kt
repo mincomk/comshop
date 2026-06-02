@@ -7,7 +7,7 @@ import com.mojang.brigadier.arguments.*
 
 fun <T : Any> NativeArgumentType<T>.toBrigadierArgumentType(): ArgumentType<T> =
     when (this) {
-        is NativeArgumentType.BoolArgumentType -> {
+        is NativeArgumentType.BooleanArgumentType -> {
             @Suppress("UNCHECKED_CAST")
             BoolArgumentType.bool() as ArgumentType<T>
         }

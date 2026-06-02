@@ -1,7 +1,9 @@
 package com.github.ityeri.comshop.internal.argument
 
 sealed class NativeArgumentType<T : Any> : ComshopArgumentType<T> {
-    class BoolArgumentType : NativeArgumentType<Boolean>()
+    // ArgumentType class's name prefix follows target generic type's class name (kotlin-side name first)
+
+    class BooleanArgumentType : NativeArgumentType<Boolean>()
 
     class IntArgumentType(
         val min: Int = Int.MIN_VALUE,
