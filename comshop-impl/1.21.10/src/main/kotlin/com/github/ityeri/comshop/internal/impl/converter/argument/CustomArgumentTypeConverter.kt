@@ -2,6 +2,7 @@ package com.github.ityeri.comshop.internal.impl.converter.argument
 
 import com.github.ityeri.comshop.internal.CommandWritingContext
 import com.github.ityeri.comshop.internal.argument.ComshopCustomArgumentType
+import com.mojang.brigadier.StringReader
 import com.mojang.brigadier.arguments.ArgumentType
 import com.mojang.brigadier.context.CommandContext
 import com.mojang.brigadier.suggestion.Suggestions
@@ -14,17 +15,17 @@ import java.util.concurrent.CompletableFuture
 
 
 fun <T : Any, N : Any> convertCustomArgumentType(argumentType: ComshopCustomArgumentType<T, N>): ArgumentType<T> =
-    object : CustomArgumentType.Converted<T, N> {
-        override fun convert(nativeType: N): T {
+    object : CustomArgumentType<T, N> {
+        override fun parse(reader: StringReader): T {
             throw NotImplementedError(
                 "The ComshopCustomArgumentType does not support parsing without a source value"
             )
         }
 
-        override fun <S : Any> convert(nativeType: N, source: S): T =
+        override fun <S : Any> parse(reader: StringReader, source: S): T =
             when (source) {
                 is CommandSourceStack -> {
-                    argumentType.parse(nativeType, source)
+                    argumentType.parse(nativeType.parse(reader, source), source)
                 }
                 else -> {
                     throw NotImplementedError(
@@ -32,9 +33,6 @@ fun <T : Any, N : Any> convertCustomArgumentType(argumentType: ComshopCustomArgu
                     )
                 }
             }
-
-        override fun getNativeType(): ArgumentType<N> =
-            convertNativeArgumentType(argumentType.nativeArgumentType)
 
         override fun <S : Any> listSuggestions(
             context: CommandContext<S>,
@@ -63,4 +61,6 @@ fun <T : Any, N : Any> convertCustomArgumentType(argumentType: ComshopCustomArgu
 
             return builder.buildFuture()
         }
+
+        override fun getNativeType(): ArgumentType<N> = convertNativeArgumentType(argumentType.nativeArgumentType)
     }
