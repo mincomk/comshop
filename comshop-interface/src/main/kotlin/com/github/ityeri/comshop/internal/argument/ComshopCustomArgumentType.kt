@@ -1,7 +1,6 @@
 package com.github.ityeri.comshop.internal.argument
 
 import com.github.ityeri.comshop.internal.CommandWritingContext
-import com.github.ityeri.comshop.internal.argument.SuggestionElement
 import io.papermc.paper.command.brigadier.CommandSourceStack
 
 abstract class ComshopCustomArgumentType<T, N>(val nativeArgumentType: NativeArgumentType<N>) : ComshopArgumentType<T> {
