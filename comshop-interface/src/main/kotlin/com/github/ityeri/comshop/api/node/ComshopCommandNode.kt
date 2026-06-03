@@ -1,10 +1,10 @@
-package com.github.ityeri.comshop.contract.node
+package com.github.ityeri.comshop.api.node
 
-import com.github.ityeri.comshop.contract.CommandResult
-import com.github.ityeri.comshop.contract.CommandWritingContext
-import com.github.ityeri.comshop.contract.ComshopContext
-import com.github.ityeri.comshop.contract.argument.ComshopArgumentType
-import com.github.ityeri.comshop.contract.argument.SuggestionElement
+import com.github.ityeri.comshop.api.CommandResult
+import com.github.ityeri.comshop.api.CommandWritingContext
+import com.github.ityeri.comshop.api.ComshopContext
+import com.github.ityeri.comshop.api.argument.ComshopArgumentType
+import com.github.ityeri.comshop.api.argument.SuggestionElement
 import io.papermc.paper.command.brigadier.CommandSourceStack
 
 

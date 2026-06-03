@@ -1,7 +1,7 @@
 package com.github.ityeri.comshop.impl.converter.argument
 
-import com.github.ityeri.comshop.contract.argument.ComshopCustomArgumentType
-import com.github.ityeri.comshop.contract.exception.ComshopCommandException
+import com.github.ityeri.comshop.api.argument.ComshopCustomArgumentType
+import com.github.ityeri.comshop.api.exception.ComshopCommandException
 import com.github.ityeri.comshop.impl.converter.toBrigadierSuggestionProvider
 import com.mojang.brigadier.StringReader
 import com.mojang.brigadier.arguments.ArgumentType

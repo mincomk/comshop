@@ -1,7 +1,7 @@
 package com.github.ityeri.comshop.impl.converter
 
-import com.github.ityeri.comshop.contract.CommandWritingContext
-import com.github.ityeri.comshop.contract.argument.SuggestionElement
+import com.github.ityeri.comshop.api.CommandWritingContext
+import com.github.ityeri.comshop.api.argument.SuggestionElement
 import com.mojang.brigadier.suggestion.SuggestionProvider
 import io.papermc.paper.command.brigadier.CommandSourceStack
 import io.papermc.paper.command.brigadier.MessageComponentSerializer

@@ -1,4 +1,4 @@
-package com.github.ityeri.comshop.contract
+package com.github.ityeri.comshop.api
 
 class CommandWritingContext(val fullInput: String, val start: Int) {
     val remining: String

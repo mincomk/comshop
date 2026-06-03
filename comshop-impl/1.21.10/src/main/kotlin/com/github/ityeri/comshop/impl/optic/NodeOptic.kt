@@ -2,7 +2,7 @@ package com.github.ityeri.comshop.impl.optic
 
 import arrow.optics.PLens
 import arrow.optics.PTraversal
-import com.github.ityeri.comshop.contract.node.Node
+import com.github.ityeri.comshop.api.node.Node
 
 
 fun <A, B> nodeCastingPLens(): PLens<

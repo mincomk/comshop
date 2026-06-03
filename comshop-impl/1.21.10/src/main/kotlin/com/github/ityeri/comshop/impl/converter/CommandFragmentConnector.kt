@@ -3,7 +3,7 @@ package com.github.ityeri.comshop.impl.converter
 import com.github.ityeri.comshop.impl.CommandFragment
 import com.github.ityeri.comshop.impl.BuilderBoundary
 import com.github.ityeri.comshop.impl.optic.nodePTraversal
-import com.github.ityeri.comshop.contract.node.Node
+import com.github.ityeri.comshop.api.node.Node
 
 
 fun connectCommandFragments(node: Node<CommandFragment>): BuilderBoundary =

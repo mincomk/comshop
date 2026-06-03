@@ -1,4 +1,4 @@
-package com.github.ityeri.comshop.contract.argument
+package com.github.ityeri.comshop.api.argument
 
 enum class StringType {
     WORD,

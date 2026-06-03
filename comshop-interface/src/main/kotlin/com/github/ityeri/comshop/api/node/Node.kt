@@ -1,4 +1,4 @@
-package com.github.ityeri.comshop.contract.node
+package com.github.ityeri.comshop.api.node
 
 sealed class Node<out T> {
     class SingleNode<T>(val value: T) : Node<T>()

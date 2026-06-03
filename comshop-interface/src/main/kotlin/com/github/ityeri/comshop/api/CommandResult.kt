@@ -1,4 +1,4 @@
-package com.github.ityeri.comshop.contract
+package com.github.ityeri.comshop.api
 
 enum class CommandResult {
     SUCCESS,

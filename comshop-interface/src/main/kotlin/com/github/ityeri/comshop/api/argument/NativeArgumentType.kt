@@ -1,4 +1,4 @@
-package com.github.ityeri.comshop.contract.argument
+package com.github.ityeri.comshop.api.argument
 
 sealed class NativeArgumentType<T : Any> : ComshopArgumentType<T> {
     // ArgumentType class's name prefix follows target generic type's class name (kotlin-side name first)

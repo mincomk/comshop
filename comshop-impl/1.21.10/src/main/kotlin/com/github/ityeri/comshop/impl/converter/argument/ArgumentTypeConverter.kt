@@ -1,8 +1,8 @@
 package com.github.ityeri.comshop.impl.converter.argument
 
-import com.github.ityeri.comshop.contract.argument.ComshopArgumentType
-import com.github.ityeri.comshop.contract.argument.ComshopCustomArgumentType
-import com.github.ityeri.comshop.contract.argument.NativeArgumentType
+import com.github.ityeri.comshop.api.argument.ComshopArgumentType
+import com.github.ityeri.comshop.api.argument.ComshopCustomArgumentType
+import com.github.ityeri.comshop.api.argument.NativeArgumentType
 import com.mojang.brigadier.arguments.ArgumentType
 
 

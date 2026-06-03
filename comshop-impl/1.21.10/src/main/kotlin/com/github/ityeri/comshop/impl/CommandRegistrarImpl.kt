@@ -1,10 +1,10 @@
 package com.github.ityeri.comshop.impl
 
-import com.github.ityeri.comshop.contract.entry.AbstractCommandRegistrar
+import com.github.ityeri.comshop.api.entry.AbstractCommandRegistrar
 import com.github.ityeri.comshop.impl.converter.connectCommandFragments
 import com.github.ityeri.comshop.impl.converter.toCommandFragmentNode
-import com.github.ityeri.comshop.contract.node.ComshopCommandNode
-import com.github.ityeri.comshop.contract.node.Node
+import com.github.ityeri.comshop.api.node.ComshopCommandNode
+import com.github.ityeri.comshop.api.node.Node
 import com.mojang.brigadier.tree.LiteralCommandNode
 import io.papermc.paper.command.brigadier.CommandSourceStack
 import io.papermc.paper.plugin.lifecycle.event.types.LifecycleEvents

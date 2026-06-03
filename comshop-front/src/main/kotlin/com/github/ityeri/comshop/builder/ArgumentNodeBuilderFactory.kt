@@ -1,7 +1,7 @@
 package com.github.ityeri.comshop.builder
 
-import com.github.ityeri.comshop.contract.argument.NativeArgumentType
-import com.github.ityeri.comshop.contract.argument.StringType
+import com.github.ityeri.comshop.api.argument.NativeArgumentType
+import com.github.ityeri.comshop.api.argument.StringType
 
 
 open class ArgumentNodeBuilderFactory {

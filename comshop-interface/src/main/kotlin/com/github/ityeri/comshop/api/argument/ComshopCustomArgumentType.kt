@@ -1,6 +1,6 @@
-package com.github.ityeri.comshop.contract.argument
+package com.github.ityeri.comshop.api.argument
 
-import com.github.ityeri.comshop.contract.CommandWritingContext
+import com.github.ityeri.comshop.api.CommandWritingContext
 import io.papermc.paper.command.brigadier.CommandSourceStack
 
 abstract class ComshopCustomArgumentType<T : Any, N : Any>(val nativeArgumentType: NativeArgumentType<N>) : ComshopArgumentType<T> {
