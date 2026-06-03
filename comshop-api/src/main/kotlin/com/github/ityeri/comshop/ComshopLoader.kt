@@ -3,7 +3,7 @@ package com.github.ityeri.comshop
 import com.github.ityeri.comshop.internal.entry.AbstractCommandRegistrar
 
 object ComshopLoader {
-    var registrarClassPath: String = "com.github.ityeri.comshop.internal.impl.ComshopLoaderImpl"
+    var registrarClassPath: String = "com.github.ityeri.comshop.internal.impl.CommandRegistrarImpl"
 
     fun loadRegistrarImpl(): AbstractCommandRegistrar =
         try {
