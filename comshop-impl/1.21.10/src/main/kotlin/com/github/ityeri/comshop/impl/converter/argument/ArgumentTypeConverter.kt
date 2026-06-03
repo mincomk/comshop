@@ -1,4 +1,4 @@
-package com.github.ityeri.comshop.contract.impl.converter.argument
+package com.github.ityeri.comshop.impl.converter.argument
 
 import com.github.ityeri.comshop.contract.argument.ComshopArgumentType
 import com.github.ityeri.comshop.contract.argument.ComshopCustomArgumentType

@@ -1,4 +1,4 @@
-package com.github.ityeri.comshop.contract.impl.optic
+package com.github.ityeri.comshop.impl.optic
 
 import arrow.optics.PLens
 import arrow.optics.PTraversal

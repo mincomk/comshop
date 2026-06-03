@@ -1,8 +1,8 @@
-package com.github.ityeri.comshop.contract.impl
+package com.github.ityeri.comshop.impl
 
 import com.github.ityeri.comshop.contract.entry.AbstractCommandRegistrar
-import com.github.ityeri.comshop.contract.impl.converter.connectCommandFragments
-import com.github.ityeri.comshop.contract.impl.converter.toCommandFragmentNode
+import com.github.ityeri.comshop.impl.converter.connectCommandFragments
+import com.github.ityeri.comshop.impl.converter.toCommandFragmentNode
 import com.github.ityeri.comshop.contract.node.ComshopCommandNode
 import com.github.ityeri.comshop.contract.node.Node
 import com.mojang.brigadier.tree.LiteralCommandNode

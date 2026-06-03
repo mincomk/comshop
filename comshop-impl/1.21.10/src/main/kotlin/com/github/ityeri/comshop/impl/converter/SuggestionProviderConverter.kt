@@ -1,4 +1,4 @@
-package com.github.ityeri.comshop.contract.impl.converter
+package com.github.ityeri.comshop.impl.converter
 
 import com.github.ityeri.comshop.contract.CommandWritingContext
 import com.github.ityeri.comshop.contract.argument.SuggestionElement

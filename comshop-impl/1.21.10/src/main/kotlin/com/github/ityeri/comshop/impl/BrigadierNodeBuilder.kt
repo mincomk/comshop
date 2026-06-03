@@ -1,4 +1,4 @@
-package com.github.ityeri.comshop.contract.impl
+package com.github.ityeri.comshop.impl
 
 import com.mojang.brigadier.Command
 import com.mojang.brigadier.arguments.ArgumentType

@@ -1,8 +1,8 @@
-package com.github.ityeri.comshop.contract.impl.converter
+package com.github.ityeri.comshop.impl.converter
 
-import com.github.ityeri.comshop.contract.impl.CommandFragment
-import com.github.ityeri.comshop.contract.impl.BuilderBoundary
-import com.github.ityeri.comshop.contract.impl.optic.nodePTraversal
+import com.github.ityeri.comshop.impl.CommandFragment
+import com.github.ityeri.comshop.impl.BuilderBoundary
+import com.github.ityeri.comshop.impl.optic.nodePTraversal
 import com.github.ityeri.comshop.contract.node.Node
 
 

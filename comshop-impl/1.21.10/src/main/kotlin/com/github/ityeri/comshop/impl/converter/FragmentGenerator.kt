@@ -1,10 +1,10 @@
-package com.github.ityeri.comshop.contract.impl.converter
+package com.github.ityeri.comshop.impl.converter
 
 import com.github.ityeri.comshop.contract.ComshopContext
-import com.github.ityeri.comshop.contract.impl.CommandFragment
-import com.github.ityeri.comshop.contract.impl.BrigadierNodeBuilder
-import com.github.ityeri.comshop.contract.impl.converter.argument.toBrigadierArgumentType
-import com.github.ityeri.comshop.contract.impl.optic.nodePTraversal
+import com.github.ityeri.comshop.impl.CommandFragment
+import com.github.ityeri.comshop.impl.BrigadierNodeBuilder
+import com.github.ityeri.comshop.impl.converter.argument.toBrigadierArgumentType
+import com.github.ityeri.comshop.impl.optic.nodePTraversal
 import com.github.ityeri.comshop.contract.node.ComshopCommandNode
 import com.github.ityeri.comshop.contract.node.Node
 
