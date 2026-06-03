@@ -8,6 +8,8 @@ import com.github.ityeri.comshop.internal.argument.SuggestionElement
 import io.papermc.paper.command.brigadier.CommandSourceStack
 
 
+typealias CustomSuggestionProvider = (CommandWritingContext, CommandSourceStack) -> Iterable<SuggestionElement>
+
 sealed class ComshopCommandNode {
     class LiteralCommandNode(
         val name: String,
@@ -18,8 +20,7 @@ sealed class ComshopCommandNode {
         val name: String,
         val argumentType: ComshopArgumentType<T>,
         val requiresChecker: (CommandSourceStack) -> Boolean = { _ -> true },
-        val customSuggestionProvider: (CommandWritingContext, CommandSourceStack) -> Iterable<SuggestionElement> =
-            { _, _ -> emptyList() },
+        val customSuggestionProvider: CustomSuggestionProvider? = null
     ) : ComshopCommandNode()
 
     class ExecutionNode(
