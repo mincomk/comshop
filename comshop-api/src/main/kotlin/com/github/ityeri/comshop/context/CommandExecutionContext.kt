@@ -1,7 +1,7 @@
 package com.github.ityeri.comshop.context
 
 import com.github.ityeri.comshop.ComshopDsl
-import com.github.ityeri.comshop.internal.ComshopContext
+import com.github.ityeri.comshop.contract.ComshopContext
 import kotlin.reflect.KClass
 
 

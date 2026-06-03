@@ -2,8 +2,8 @@ package com.github.ityeri.comshop.builder
 
 import com.github.ityeri.comshop.context.SourceContext
 import com.github.ityeri.comshop.ComshopDsl
-import com.github.ityeri.comshop.internal.CommandWritingContext
-import com.github.ityeri.comshop.internal.argument.SuggestionElement
+import com.github.ityeri.comshop.contract.CommandWritingContext
+import com.github.ityeri.comshop.contract.argument.SuggestionElement
 import io.papermc.paper.command.brigadier.CommandSourceStack
 import net.kyori.adventure.text.Component
 

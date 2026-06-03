@@ -3,9 +3,9 @@ package com.github.ityeri.comshop.builder
 import com.github.ityeri.comshop.AnyArgumentNode
 import com.github.ityeri.comshop.context.SourceContext
 import com.github.ityeri.comshop.ComshopDsl
-import com.github.ityeri.comshop.internal.argument.ComshopArgumentType
-import com.github.ityeri.comshop.internal.node.ComshopCommandNode
-import com.github.ityeri.comshop.internal.node.Node
+import com.github.ityeri.comshop.contract.argument.ComshopArgumentType
+import com.github.ityeri.comshop.contract.node.ComshopCommandNode
+import com.github.ityeri.comshop.contract.node.Node
 
 
 typealias CustomSuggestionProvider = SuggestionBuilder.() -> Unit

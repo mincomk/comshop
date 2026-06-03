@@ -1,6 +1,6 @@
 package com.github.ityeri.comshop
 
-import com.github.ityeri.comshop.internal.entry.AbstractCommandRegistrar
+import com.github.ityeri.comshop.contract.entry.AbstractCommandRegistrar
 
 object ComshopLoader {
     var registrarClassPath: String = "com.github.ityeri.comshop.internal.impl.CommandRegistrarImpl"

@@ -4,9 +4,9 @@ import com.github.ityeri.comshop.builder.ArgumentStructureBuilder.ChainStructure
 import com.github.ityeri.comshop.context.CommandExecutionContext
 import com.github.ityeri.comshop.context.SourceContext
 import com.github.ityeri.comshop.ComshopDsl
-import com.github.ityeri.comshop.internal.CommandResult
-import com.github.ityeri.comshop.internal.node.ComshopCommandNode
-import com.github.ityeri.comshop.internal.node.Node
+import com.github.ityeri.comshop.contract.CommandResult
+import com.github.ityeri.comshop.contract.node.ComshopCommandNode
+import com.github.ityeri.comshop.contract.node.Node
 
 
 @ComshopDsl

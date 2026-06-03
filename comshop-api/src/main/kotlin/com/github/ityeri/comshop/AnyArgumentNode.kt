@@ -1,6 +1,6 @@
 package com.github.ityeri.comshop
 
-import com.github.ityeri.comshop.internal.node.ComshopCommandNode
+import com.github.ityeri.comshop.contract.node.ComshopCommandNode
 
 
 typealias AnyArgumentNode = ComshopCommandNode.ArgumentNode<*>
