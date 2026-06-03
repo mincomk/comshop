@@ -1,7 +1,7 @@
 package com.github.ityeri.comshop.internal.impl.converter
 
 import com.github.ityeri.comshop.internal.CommandWritingContext
-import com.github.ityeri.comshop.internal.node.ComshopSuggestionProvider
+import com.github.ityeri.comshop.internal.argument.SuggestionElement
 import com.mojang.brigadier.suggestion.SuggestionProvider
 import io.papermc.paper.command.brigadier.CommandSourceStack
 import io.papermc.paper.command.brigadier.MessageComponentSerializer
@@ -9,7 +9,7 @@ import net.kyori.adventure.text.Component
 
 
 fun toBrigadierSuggestionProvider(
-    suggestionProvider: ComshopSuggestionProvider
+    suggestionProvider: (CommandWritingContext, CommandSourceStack) -> Iterable<SuggestionElement>
 ): SuggestionProvider<CommandSourceStack> =
     SuggestionProvider<CommandSourceStack> { context, builder ->
         suggestionProvider(
