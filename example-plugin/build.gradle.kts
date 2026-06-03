@@ -8,7 +8,7 @@ plugins {
 dependencies {
     compileOnly(libs.paper)
 
-    implementation(project(":comshop-api"))
+    implementation(project(":comshop-front"))
 }
 
 tasks.build {

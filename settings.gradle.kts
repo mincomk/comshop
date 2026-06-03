@@ -15,7 +15,7 @@ rootProject.name = "comshop"
 
 include("example-plugin")
 include("comshop-interface")
-include("comshop-api")
+include("comshop-front")
 
 include("comshop-impl")
 include("comshop-impl:1.21.10")
