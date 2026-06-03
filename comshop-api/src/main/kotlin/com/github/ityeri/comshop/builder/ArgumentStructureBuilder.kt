@@ -2,7 +2,7 @@ package com.github.ityeri.comshop.builder
 
 import com.github.ityeri.comshop.AnyArgumentNode
 import com.github.ityeri.comshop.context.SourceContext
-import com.github.ityeri.comshop.dsl.ComshopDsl
+import com.github.ityeri.comshop.ComshopDsl
 import com.github.ityeri.comshop.internal.argument.ComshopArgumentType
 import com.github.ityeri.comshop.internal.node.ComshopCommandNode
 import com.github.ityeri.comshop.internal.node.Node

@@ -1,6 +1,6 @@
 package com.github.ityeri.comshop.context
 
-import com.github.ityeri.comshop.dsl.ComshopDsl
+import com.github.ityeri.comshop.ComshopDsl
 import io.papermc.paper.command.brigadier.CommandSourceStack
 import org.bukkit.command.CommandSender
 import org.bukkit.entity.Entity

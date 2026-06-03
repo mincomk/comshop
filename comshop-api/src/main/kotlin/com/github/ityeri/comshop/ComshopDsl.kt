@@ -1,4 +1,4 @@
-package com.github.ityeri.comshop.dsl
+package com.github.ityeri.comshop
 
 @DslMarker
 @Target(AnnotationTarget.CLASS, AnnotationTarget.TYPE)
