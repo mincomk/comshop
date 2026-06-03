@@ -20,6 +20,9 @@ class CommandBuilder(val name: String) {
         this.requiresChecker = requiresChecker
     }
 
+    fun arguments(builder: CommandBuilder) {
+        subCommandBuilders.add(builder)
+    }
     fun arguments(block: ChainStructureBuilder.() -> Unit) {
         argumentStructureBuilder.arguments(block)
     }
@@ -28,6 +31,9 @@ class CommandBuilder(val name: String) {
         executor = block
     }
 
+    fun then(builder: CommandBuilder) {
+        subCommandBuilders.add(builder)
+    }
     fun then(name: String, block: CommandBuilder.() -> Unit) {
         subCommandBuilders.add(
             CommandBuilder(name).apply(block)
