@@ -7,11 +7,10 @@ kotlin = "2.1.20"
 kotlinxDatetime = "0.6.1"
 kotlinxSerializationJSON = "1.7.3"
 kotlinxCoroutines = "1.9.0"
-
-# this version is intergreted paper api version
+# this version is a intergreted paper api version
 # paper dependency includes brigadier
 # actual paper version is specified at comshop-impl level
-paper = "1.21.10-R0.1-SNAPSHOT"
+paperGlobal = "1.21.10-R0.1-SNAPSHOT"
 
 [libraries]
 kotlinGradlePlugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
@@ -19,7 +18,7 @@ kotlinxDatetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.r
 kotlinxSerialization = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerializationJSON" }
 kotlinxCoroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinxCoroutines" }
 
-paper = { group = "io.papermc.paper", name = "paper-api", version.ref = "paper" }
+paperGlobal = { group = "io.papermc.paper", name = "paper-api", version.ref = "paperGlobal" }
 
 # Libraries can be bundled together for easier import
 [bundles]

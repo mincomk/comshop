@@ -6,8 +6,9 @@ plugins {
 }
 
 dependencies {
-    compileOnly(libs.paper)
+    compileOnly(libs.paperGlobal)
 
+    runtimeOnly(project(":comshop-impl:1.21.10"))
     implementation(project(":comshop-front"))
 }
 
