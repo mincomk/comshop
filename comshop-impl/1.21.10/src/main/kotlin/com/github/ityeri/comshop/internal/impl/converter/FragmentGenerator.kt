@@ -33,7 +33,9 @@ fun toCommandFragment(commandNode: ComshopCommandNode): CommandFragment =
                     commandNode.name,
                     argumentType = commandNode.argumentType.toBrigadierArgumentType(),
                     requiresChecker =  commandNode.requiresChecker,
-                    suggestionProvider = toBrigadierSuggestionProvider(commandNode.customSuggestionProvider)
+                    suggestionProvider = commandNode.customSuggestionProvider?.let {
+                        toBrigadierSuggestionProvider(it)
+                    }
                 )
             )
         }
